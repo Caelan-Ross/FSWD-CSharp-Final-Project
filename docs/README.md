@@ -1,4 +1,4 @@
-# University of Alberta Template Repository
-## Full Stack Web Application Development Program
+# Team MACK
+## EXSM 3943
 
 Add your README content here.
