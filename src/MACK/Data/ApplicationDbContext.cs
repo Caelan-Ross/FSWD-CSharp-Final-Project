@@ -1,9 +1,9 @@
-﻿using C_Sharp_Final_Project.Models;
+﻿using MACK.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-namespace C_Sharp_Final_Project
+namespace MACK
 {
     public class ApplicationDbContext : IdentityDbContext
     {

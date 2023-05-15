@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace C_Sharp_Final_Project.Models
+namespace MACK.Models
 {
     public class Address
     {
