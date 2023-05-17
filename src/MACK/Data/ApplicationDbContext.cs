@@ -25,12 +25,9 @@ namespace MACK
         }
         public DbSet<Address> Addresses
         {
-            get;
+            get; 
             set;
         }
-
-
-
         public DbSet<Vehicle> Vehicles
         {
             get;
@@ -482,10 +479,10 @@ namespace MACK
                 .HasMaxLength(50);
 
             modelBuilder.Entity<Vehicle>()
-    .HasOne(v => v.Manufacturer)
-    .WithMany(m => m.Vehicles)
-    .HasForeignKey(v => v.ManufacturerId)
-    .IsRequired(); // ManufacturerId is required
+                .HasOne(v => v.Manufacturer)
+                .WithMany(m => m.Vehicles)
+                .HasForeignKey(v => v.ManufacturerId)
+                .IsRequired(); // ManufacturerId is required
 
             modelBuilder.Entity<Vehicle>()
                 .HasOne(v => v.Model)
