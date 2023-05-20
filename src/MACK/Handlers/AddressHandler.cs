@@ -8,7 +8,7 @@ namespace MACK.Repository
     public static class AddressRepository
     {
         // Create
-        public static Address CreateAddress(string street, string city, string province, string postalCode, string country, int foreignKey)
+        public static Address CreateAddress(string street, string city, string province, string postalCode, string country, int corperationId,int? dealershpId = null)
         {
             using(ApplicationDbContext _context = new ApplicationDbContext())
             {
@@ -19,7 +19,8 @@ namespace MACK.Repository
                     Province = province,
                     PostalCode = postalCode,
                     Country = country,
-                    ForeignKey = foreignKey
+                    DealershipId = dealershpId,
+                    CorporationId = corperationId
                 };
                 _context.Addresses.Add(address);
                 _context.SaveChanges();
@@ -64,7 +65,8 @@ namespace MACK.Repository
                 existingAddress.Province = address.Province;
                 existingAddress.PostalCode = address.PostalCode;
                 existingAddress.Country = address.Country;
-                existingAddress.ForeignKey = address.ForeignKey;
+                existingAddress.DealershipId = address.DealershipId;
+                existingAddress.CorporationId = address.CorporationId;
                 _context.SaveChanges();
 
                 return existingAddress;

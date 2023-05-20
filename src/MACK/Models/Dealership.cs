@@ -33,7 +33,6 @@ namespace MACK.Models
         public virtual Corporation Corporation { get; set; }
 
         [Required]
-        [ForeignKey(nameof(AddressId))]
         [InverseProperty(nameof(Models.Address.Dealership))]
         public virtual Address Address { get; set; }
 
