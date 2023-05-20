@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Diagnostics.CodeAnalysis;
 using System.Net;
 
 namespace MACK.Models
@@ -24,10 +25,10 @@ namespace MACK.Models
         [Required]
         public int VehicleId { get; set; }
 
-        // Navigation property
-        [ForeignKey(nameof(VehicleId))]
-        [InverseProperty(nameof(Models.Vehicle.Drivetrain))]
-        public virtual Vehicle Vehicle { get; set; }
+        [AllowNull]
+        [InverseProperty(nameof(Vehicle.Drivetrain))]
+        public virtual ICollection<Vehicle> Vehicles { get; set; }
+
     }
 }
 

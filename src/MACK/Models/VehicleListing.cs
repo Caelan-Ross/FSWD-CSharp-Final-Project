@@ -21,8 +21,8 @@ namespace MACK.Models
         public string VIN { get; set; }
 
         [Required]
-        [Column("stock_number", TypeName = "int(5)")]
-        public int StockNumber { get; set; }
+        [Column("stock_number", TypeName = "varchar(5)")]
+        public string StockNumber { get; set; }
 
         [Required]
         [Column("odometer", TypeName = "int(7)")]

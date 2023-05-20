@@ -8,7 +8,7 @@ namespace MACK.Repository
     public static class VehicleListingRepository
     {
         // Create
-        public static VehicleListing CreateVehicleListing(string vin, int stockNumber, int odometer, decimal msrp, decimal price,
+        public static VehicleListing CreateVehicleListing(string vin, string stockNumber, int odometer, decimal msrp, decimal price,
             DateTime inventoryDate, bool certified, string description, string features, string photoUrlList, DateTime photosLastModifiedDate,
             int age, decimal cost, DateTime createdAt, DateTime updatedAt, DateTime deletedAt, int vehicleId, int dealershipId, int conditionId)
         {

@@ -434,11 +434,11 @@ namespace MACK
                 entity.HasIndex(c => c.ColourName).IsUnique();
 
                 // Relationships
-                entity.HasMany(c => c.VehiclesExterior)
+                entity.HasMany(c => c.ExteriorVehicles)
                     .WithOne(v => v.ExteriorColour)
                     .HasForeignKey(v => v.ExteriorColourId);
 
-                entity.HasMany(c => c.VehiclesInterior)
+                entity.HasMany(c => c.InteriorVehicles)
                     .WithOne(v => v.InteriorColour)
                     .HasForeignKey(v => v.InteriorColourId);
             });
@@ -517,12 +517,12 @@ namespace MACK
 
             modelBuilder.Entity<Vehicle>()
                 .HasOne(v => v.ExteriorColour)
-                .WithMany(ec => ec.VehiclesExterior)
+                .WithMany(ec => ec.ExteriorVehicles)
                 .HasForeignKey(v => v.ExteriorColourId); // ExteriorColourId is not marked as required
 
             modelBuilder.Entity<Vehicle>()
                 .HasOne(v => v.InteriorColour)
-                .WithMany(ic => ic.VehiclesInterior)
+                .WithMany(ic => ic.InteriorVehicles)
                 .HasForeignKey(v => v.InteriorColourId);
 
             // Seed data for Vehicle
@@ -601,7 +601,7 @@ namespace MACK
                   Age = 3,
                   Cost = 20000,
                   DealershipId = 1,
-                  created_at = DateTime.Now
+                  CreatedAt = DateTime.Now
               }
             );
         }
