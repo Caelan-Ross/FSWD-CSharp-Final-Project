@@ -23,8 +23,8 @@ namespace MACK.Models
         [Column("address_id", TypeName = "int(10)")]
         public int AddressId { get; set; }
 
-        [ForeignKey(nameof(AddressId))]
-        [InverseProperty(nameof(Models.Address.Corperation))]
+        [Required]
+        [InverseProperty(nameof(Models.Address.Corporation))]
         public virtual Address Address { get; set; }
 
         [AllowNull]

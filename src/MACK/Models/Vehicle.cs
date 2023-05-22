@@ -92,7 +92,7 @@ namespace MACK.Models
         public int DrivetrainId { get; set; }
 
         [ForeignKey(nameof(DrivetrainId))]
-        [InverseProperty(nameof(Models.Drivetrain.Vehicle))]
+        [InverseProperty(nameof(Models.Drivetrain.Vehicles))]
         public virtual Drivetrain Drivetrain { get; set; }
 
         [Required]
@@ -101,7 +101,7 @@ namespace MACK.Models
 
         [AllowNull]
         [ForeignKey(nameof(ExteriorColourId))]
-        [InverseProperty(nameof(Colour.VehicleExterior))]
+        [InverseProperty(nameof(Colour.ExteriorVehicles))]
         public virtual Colour ExteriorColour { get; set; }
 
         [Required]
@@ -110,7 +110,7 @@ namespace MACK.Models
 
         [AllowNull]
         [ForeignKey(nameof(InteriorColourId))]
-        [InverseProperty(nameof(Colour.VehicleInterior))]
+        [InverseProperty(nameof(Colour.InteriorVehicles))]
         public virtual Colour InteriorColour { get; set; }
 
         [Required]

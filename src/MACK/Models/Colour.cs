@@ -24,14 +24,12 @@ namespace MACK.Models
         public int VehicleId { get; set; }
 
         [AllowNull]
-        [ForeignKey(nameof(VehicleId))]
         [InverseProperty(nameof(Vehicle.ExteriorColour))]
-        public virtual Vehicle VehicleExterior { get; set; }
+        public virtual ICollection<Vehicle> ExteriorVehicles { get; set; }
 
         [AllowNull]
-        [ForeignKey(nameof(VehicleId))]
         [InverseProperty(nameof(Vehicle.InteriorColour))]
-        public virtual Vehicle VehicleInterior { get; set; }
+        public virtual ICollection<Vehicle> InteriorVehicles { get; set; }
     }
 }
 
