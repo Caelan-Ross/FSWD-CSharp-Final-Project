@@ -46,12 +46,10 @@ namespace MACK.Models
 
         [AllowNull]
         [InverseProperty(nameof(Models.Dealership.Address))]
-        [ForeignKey(nameof(DealershipId))]
         public virtual Dealership Dealership { get; set; }
 
         [Required]
         [InverseProperty(nameof(Models.Corporation.Address))]
-        [ForeignKey(nameof(CorporationId))]
         public virtual Corporation Corporation { get; set; }
 
 
