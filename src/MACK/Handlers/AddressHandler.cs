@@ -3,9 +3,9 @@ using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace MACK.Repository
+namespace MACK.Handlers
 {
-    public static class AddressRepository
+    public static class AddressHandlers
     {
         // Create
         public static Address CreateAddress(string street, string city, string province, string postalCode, string country, int corperationId,int? dealershpId = null)

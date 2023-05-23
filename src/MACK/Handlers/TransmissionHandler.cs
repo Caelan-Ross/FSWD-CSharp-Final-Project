@@ -3,9 +3,9 @@ using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace MACK.Repository
+namespace MACK.Handlers
 {
-    public static class TransmissionRepository
+    public static class TransmissionHandlers
     {
         // Create
         public static Transmission CreateTransmission(string transmissionType, int transmissionGears)

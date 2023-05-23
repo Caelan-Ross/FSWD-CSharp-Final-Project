@@ -3,9 +3,9 @@ using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace MACK.Repository
+namespace MACK.Handlers
 {
-    public static class ModelRepository
+    public static class ModelHandlers
     {
         // Create
         public static Model CreateModel(string modelName, int manufacturerId)

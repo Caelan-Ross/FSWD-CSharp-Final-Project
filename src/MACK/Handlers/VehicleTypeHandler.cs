@@ -3,9 +3,9 @@ using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace MACK.Repository
+namespace MACK.Handlers
 {
-    public static class VehicleTypeRepository
+    public static class VehicleTypeHandlers
     {
         // Create
         public static VehicleType CreateVehicleType(string typeName)

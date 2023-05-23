@@ -3,9 +3,9 @@ using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace MACK.Repository
+namespace MACK.Handlers
 {
-    public static class CorporationRepository
+    public static class CorporationHandlers
     {
         // Create
         public static Corporation CreateCorporation(string corporationName, int addressId)

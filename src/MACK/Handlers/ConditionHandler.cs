@@ -3,9 +3,9 @@ using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace MACK.Repository
+namespace MACK.Handlers
 {
-    public static class ConditionRepository
+    public static class ConditionHandlers
     {
         // Create
         public static Condition CreateCondition(string conditionName, int vehicleListingId)

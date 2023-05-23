@@ -3,10 +3,10 @@ using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace MACK.Repository
+namespace MACK.Handlers
 {
-    public static class ColourRepository
-    {
+    public static class ColourHandlers
+    { 
         // Create
         public static Colour CreateColour(string colourName, int vehicleId)
         {
