@@ -20,10 +20,6 @@ namespace MACK.Models
         public string ManufacturerName { get; set; }
 
         [AllowNull]
-        [InverseProperty(nameof(Vehicle.Manufacturer))]
-        public ICollection<Vehicle> Vehicles { get; set; }
-
-        [AllowNull]
         [InverseProperty(nameof(Model.Manufacturer))]
         public ICollection<Model> Models { get; set; }
 

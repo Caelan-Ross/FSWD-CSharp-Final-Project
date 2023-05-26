@@ -8,14 +8,13 @@ namespace MACK.Handlers
     public static class ConditionHandlers
     {
         // Create
-        public static Condition CreateCondition(string conditionName, int vehicleListingId)
+        public static Condition CreateCondition(string conditionName)
         {
             using(ApplicationDbContext _context = new ApplicationDbContext())
             {
                 Condition condition = new Condition
                 {
                     ConditionName = conditionName,
-                    VehicleListingId = vehicleListingId
                 };
                 _context.Conditions.Add(condition);
                 _context.SaveChanges();
@@ -56,7 +55,6 @@ namespace MACK.Handlers
                 }
 
                 existingCondition.ConditionName = condition.ConditionName;
-                existingCondition.VehicleListingId = condition.VehicleListingId;
                 _context.SaveChanges();
 
                 return existingCondition;

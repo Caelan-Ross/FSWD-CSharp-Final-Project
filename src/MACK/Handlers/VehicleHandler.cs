@@ -8,7 +8,7 @@ namespace MACK.Handlers
     public static class VehicleHandlers
     {
         // Create
-        public static Vehicle CreateVehicle(string vin, int year, int manufacturerId, int modelId, int? seriesId,
+        public static Vehicle CreateVehicle(string vin, int year, int? seriesId,
             int vehicleTypeId, int engineCylinderCount, string engineDisplacement, string engine, string fuel,
             int transmissionId, int bodyDoorCount, int drivetrainId, int exteriorColourId, int interiorColourId,
             int cityMpg, int highwayMpg, decimal weight, decimal length, decimal width, decimal height)
@@ -19,8 +19,6 @@ namespace MACK.Handlers
                 {
                     VIN = vin,
                     Year = year,
-                    ManufacturerId = manufacturerId,
-                    ModelId = modelId,
                     SeriesId = seriesId,
                     VehicleTypeId = vehicleTypeId,
                     EngineCylinderCount = engineCylinderCount,
@@ -79,8 +77,6 @@ namespace MACK.Handlers
 
                 existingVehicle.VIN = vehicle.VIN;
                 existingVehicle.Year = vehicle.Year;
-                existingVehicle.ManufacturerId = vehicle.ManufacturerId;
-                existingVehicle.ModelId = vehicle.ModelId;
                 existingVehicle.SeriesId = vehicle.SeriesId;
                 existingVehicle.VehicleTypeId = vehicle.VehicleTypeId;
                 existingVehicle.EngineCylinderCount = vehicle.EngineCylinderCount;

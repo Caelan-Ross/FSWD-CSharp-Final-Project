@@ -28,10 +28,6 @@ namespace MACK.Models
         public virtual Manufacturer Manufacturer { get; set; }
 
         [AllowNull]
-        [InverseProperty(nameof(Vehicle.Model))]
-        public ICollection<Vehicle> Vehicles { get; set; }
-
-        [AllowNull]
         [InverseProperty(nameof(Models.Series.Model))]
         public ICollection<Series> Series { get; set; }
 
