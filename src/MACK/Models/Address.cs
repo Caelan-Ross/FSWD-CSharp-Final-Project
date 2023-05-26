@@ -37,22 +37,13 @@ namespace MACK.Models
         public string Country { get; set; }
 
         [Required]
-        [Column("corporation_id", TypeName = "int(10)")]
-        public int CorporationId { get; set; }
-
-        [AllowNull]
         [Column("dealership_id", TypeName = "int(10)")]
         public int? DealershipId { get; set; }
 
-        [AllowNull]
+        [Required]
         [ForeignKey(nameof(DealershipId))]
         [InverseProperty(nameof(Models.Dealership.Address))]
         public virtual Dealership Dealership { get; set; }
-
-        [Required]
-        [ForeignKey(nameof(CorporationId))]
-        [InverseProperty(nameof(Models.Corporation.Address))]
-        public virtual Corporation Corporation { get; set; }
 
 
     }

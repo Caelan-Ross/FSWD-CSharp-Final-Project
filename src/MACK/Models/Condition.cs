@@ -19,10 +19,6 @@ namespace MACK.Models
         [Column("condition_name", TypeName = "varchar(32)")]
         public string ConditionName { get; set; }
 
-        [Required]
-        [Column("vehicle_listing_id", TypeName = "int(10)")]
-        public int VehicleListingId { get; set; }
-
         [AllowNull]
         [InverseProperty(nameof(VehicleListing.Condition))]
         public virtual ICollection<VehicleListing> VehicleListings { get; set; }

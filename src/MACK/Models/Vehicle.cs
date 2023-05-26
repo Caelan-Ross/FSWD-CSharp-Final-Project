@@ -27,22 +27,6 @@ namespace MACK.Models
         [Range(1900, 2050, ErrorMessage = "Model Year must be between 1900 and 2050")]
         public int Year { get; set; }
 
-        [Required]
-        [Column("manufacturer_id", TypeName = "int(10)")]
-        public int ManufacturerId { get; set; }
-
-        [ForeignKey(nameof(ManufacturerId))]
-        [InverseProperty(nameof(Models.Manufacturer.Vehicles))]
-        public virtual Manufacturer Manufacturer { get; set; }
-
-        [Required]
-        [Column("model_id", TypeName = "int(10)")]
-        public int ModelId { get; set; }
-
-        [ForeignKey(nameof(ModelId))]
-        [InverseProperty(nameof(Models.Model.Vehicles))]
-        public virtual Model Model { get; set; }
-
         [AllowNull]
         [Column("series_id", TypeName = "int(10)")]
         public int? SeriesId { get; set; }
@@ -136,7 +120,6 @@ namespace MACK.Models
         [Required]
         [Column("height")]
         public decimal Height { get; set; }
-
 
         [AllowNull]
         [InverseProperty(nameof(VehicleListing.Vehicle))]

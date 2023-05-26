@@ -19,14 +19,6 @@ namespace MACK.Models
         [Column("corporation_name", TypeName = "varchar(32)")]
         public string CorporationName { get; set; }
 
-        [Required]
-        [Column("address_id", TypeName = "int(10)")]
-        public int AddressId { get; set; }
-
-        [Required]
-        [InverseProperty(nameof(Models.Address.Corporation))]
-        public virtual Address Address { get; set; }
-
         [AllowNull]
         [InverseProperty(nameof(Dealership.Corporation))]
         public ICollection<Dealership> Dealerships { get; set; }

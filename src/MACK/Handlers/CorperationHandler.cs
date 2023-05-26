@@ -8,14 +8,13 @@ namespace MACK.Handlers
     public static class CorporationHandlers
     {
         // Create
-        public static Corporation CreateCorporation(string corporationName, int addressId)
+        public static Corporation CreateCorporation(string corporationName)
         {
             using(ApplicationDbContext _context = new ApplicationDbContext())
             {
                 Corporation corporation = new Corporation
                 {
                     CorporationName = corporationName,
-                    AddressId = addressId
                 };
                 _context.Corporations.Add(corporation);
                 _context.SaveChanges();
@@ -56,7 +55,6 @@ namespace MACK.Handlers
                 }
 
                 existingCorporation.CorporationName = corporation.CorporationName;
-                existingCorporation.AddressId = corporation.AddressId;
                 _context.SaveChanges();
 
                 return existingCorporation;
