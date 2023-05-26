@@ -1,0 +1,143 @@
+﻿@model IEnumerable<MACK.Models.Vehicle>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.VIN)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Year)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Series)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.VehicleType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EngineCylinderCount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EngineDisplacement)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Engine)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Fuel)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Transmission)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BodyDoorCount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Drivetrain)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ExteriorColour)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.InteriorColour)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CityMPG)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HighwayMPG)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Weight)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Length)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Width)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Height)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.VIN)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Year)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Series.SeriesName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.VehicleType.TypeName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EngineCylinderCount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EngineDisplacement)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Engine)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fuel)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Transmission.TransmissionType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BodyDoorCount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Drivetrain.DrivetrainType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ExteriorColour.ColourName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.InteriorColour.ColourName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CityMPG)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HighwayMPG)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Weight)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Length)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Width)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Height)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.VehicleId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.VehicleId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.VehicleId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

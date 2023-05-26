@@ -1,0 +1,41 @@
+﻿@model IEnumerable<MACK.Models.Transmission>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.TransmissionType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TransmissionGears)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TransmissionType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TransmissionGears)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.TransmissionId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.TransmissionId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.TransmissionId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

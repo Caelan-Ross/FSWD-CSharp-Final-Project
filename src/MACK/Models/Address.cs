@@ -38,7 +38,7 @@ namespace MACK.Models
 
         [Required]
         [Column("dealership_id", TypeName = "int(10)")]
-        public int? DealershipId { get; set; }
+        public int DealershipId { get; set; }
 
         [Required]
         [ForeignKey(nameof(DealershipId))]
