@@ -7,44 +7,47 @@
     <!-- Heading -->
     <div class="vehicle-data-title flex">
         <h2>Vehicles</h2>
-        <button class="btn" id="createBtn" onclick="openCreateDialog(event)">
-            <i class="fas fa-plus"></i>
-        </button>
+        <a asp-action="Create">
+            <button class="btn" id="createBtn" onclick="openCreateDialog(event)">
+                <i class="fas fa-plus"></i>
+            </button>
+        </a>
     </div>
     <!-- Vehicle Create Modal -->
-    <div id="dialog-create" class="dialog" style="display: none;">
-        <form>
-            <div class="vehicle-create-card">
-                <h3>Create Vehicle</h3>
-                <img src="/images/Vehicle.png" />
-                <ul>
-                    <li>
-                        <label for="vin">VIN:</label>
-                        <input type="text" id="vin" name="vin" required>
-                    </li>
-                    <li>
-                        <label for="year">Year:</label>
-                        <input type="text" id="year" name="year" required>
-                    </li>
-                    <li>
-                        <label for="model">Model:</label>
-                        <input type="text" id="model" name="model" required>
-                    </li>
-                    <li>
-                        <label for="transmission">Transmission:</label>
-                        <input type="text" id="transmission" name="transmission" required>
-                    </li>
-                    <li>
-                        <label for="kilometres">Kilometres:</label>
-                        <input type="text" id="kilometres" name="kilometres" required>
-                    </li>
-                </ul>
-            </div>
-            <button class="btn" id="submitBtn">Submit</button>
-        </form>
-        <button class="dialog-close" onclick="closeDialog()">X</button>
+    @*NOT SURE IF WE NEED THIS*@
+    @*   <div id="dialog-create" class="dialog" style="display: none;">
+    <form>
+    <div class="vehicle-create-card">
+    <h3>Create Vehicle</h3>
+    <img src="/images/Vehicle.png" />
+    <ul>
+    <li>
+    <label for="vin">VIN:</label>
+    <input type="text" id="vin" name="vin" required>
+    </li>
+    <li>
+    <label for="year">Year:</label>
+    <input type="text" id="year" name="year" required>
+    </li>
+    <li>
+    <label for="model">Model:</label>
+    <input type="text" id="model" name="model" required>
+    </li>
+    <li>
+    <label for="transmission">Transmission:</label>
+    <input type="text" id="transmission" name="transmission" required>
+    </li>
+    <li>
+    <label for="kilometres">Kilometres:</label>
+    <input type="text" id="kilometres" name="kilometres" required>
+    </li>
+    </ul>
     </div>
-
+    <button class="btn" id="submitBtn">Submit</button>
+    </form>
+    <button class="dialog-close" onclick="closeDialog()">X</button>
+    </div>
+    *@
 
     <!-- Start of CARD/DIALOG -->
     <div class="grid-4">
@@ -52,13 +55,13 @@
         @{
             foreach (var item in Model)
             {
-                <a href="#" class="card-link" onclick="openDialog(event)">
-                    <div class="vehicle-card">
+                <div class="vehicle-card card-link">
+                    <a asp-action="Details" asp-route-id="@item.VehicleId">
                         <div class="card-header flex">
                             <h3>@Html.DisplayFor(modelItem => item.Model.ModelName)</h3>
                             <div class="card-buttons flex">
-                                <button class="btn" id="editBtn"><i class="fas fa-pencil-alt"></i></button>
-                                <button class="btn" id="deleteBtn"><i class="fas fa-trash-alt"></i></button>
+                                <a asp-action="Edit" asp-route-id="@item.VehicleId"><button class="btn" id="editBtn"><i class="fas fa-pencil-alt"></i></button></a>
+                                <a asp-action="Delete" asp-route-id="@item.VehicleId"><button class="btn" id="deleteBtn"><i class="fas fa-trash-alt"></i></button></a>
                             </div>
                         </div>
                         <img src="images/Vehicle.png" />
@@ -68,11 +71,13 @@
                             <li><span>@Html.DisplayNameFor(model => model.ModelId): </span> @Html.DisplayFor(modelItem => item.Model) </li>
                             <li><span>@Html.DisplayNameFor(model => model.Weight): </span> @Html.DisplayFor(modelItem => item.Weight) </li>
                         </ul>
-                    </div>
-                </a>
+                    </a>
+                </div>
             }
         }
     </div>
+
+
 
     @*  <!-- HTML SINGLE VEHICLE CARD --> Need to put into FOR EACH LOOP Above. This is just for reference -->
     <div class="grid-4">
@@ -97,7 +102,6 @@
     </a>
     </div>*@
 </div>
-
 
 @*DEFAULT FROM MVC  -- This will eventually be gone *@
 <p>
