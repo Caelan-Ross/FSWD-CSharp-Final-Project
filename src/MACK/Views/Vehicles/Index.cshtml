@@ -4,7 +4,7 @@
 }
 
 <div class="vehicles-grid">
-    <div class="vehicle-data-title grid-2">
+    <div class="vehicle-data-title flex">
         <h2>Vehicles</h2>
         <button class="btn" id="createBtn" onclick="openCreateDialog(event)">
             <i class="fas fa-plus"></i>
@@ -12,10 +12,11 @@
     </div>
     <!-- Vehicle Create Modal -->
     <div id="dialog-create" class="dialog" style="display: none;">
+
         <form>
             <div class="vehicle-create-card">
                 <h3>Create Vehicle</h3>
-                <img src="images/Vehicle.png" />
+                <img src="/images/Vehicle.png" />
                 <ul>
                     <li>
                         <label for="vin">VIN:</label>
@@ -43,13 +44,32 @@
         </form>
         <button class="dialog-close" onclick="closeDialog()">X</button>
     </div>
+    <!-- Start of CARD/DIALOG -->
+    <div class="grid-4">
+        <a href="#" class="card-link" onclick="openDialog(event)">
+            <div class="vehicle-card">
+                <div class="card-header flex">
+                    <h3>Tahoe</h3>
+                    <div class="card-buttons flex">
+                        <button class="btn" id="editBtn"><i class="fas fa-pencil-alt"></i></button>
+                        <button class="btn" id="deleteBtn"><i class="fas fa-trash-alt"></i></button>
+                    </div>
+                </div>
+                <img src="images/Vehicle.png" />
+                <ul>
+                    <li><span>VIN: </span> 1234567890ABCDEFG </li>
+                    <li><span>Year : </span> 2023 </li>
+                    <li><span>Model: </span> TAHOE </li>
+                    <li><span>Transmission: </span> AUTOMATIC </li>
+                    <li><span>Kilometers: </span> 2400 </li>
+                </ul>
+            </div>
+        </a>
+    </div>
 </div>
 
 
-
-
-
-@*DEFAULT FROM MVC *@
+@*DEFAULT FROM MVC  -- This will eventually be gone *@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
