@@ -23,7 +23,7 @@ namespace MACK.Controllers
         // GET: Vehicles
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.Vehicles.Include(v => v.Drivetrain).Include(v => v.ExteriorColour).Include(v => v.InteriorColour).Include(v => v.Series).Include(v => v.Transmission).Include(v => v.VehicleType);
+            var applicationDbContext = _context.Vehicles.Include(v => v.Model);
             return View(await applicationDbContext.ToListAsync());
         }
 
@@ -36,12 +36,7 @@ namespace MACK.Controllers
             }
 
             var vehicle = await _context.Vehicles
-                .Include(v => v.Drivetrain)
-                .Include(v => v.ExteriorColour)
-                .Include(v => v.InteriorColour)
-                .Include(v => v.Series)
-                .Include(v => v.Transmission)
-                .Include(v => v.VehicleType)
+                .Include(v => v.Model)
                 .FirstOrDefaultAsync(m => m.VehicleId == id);
             if (vehicle == null)
             {
@@ -54,12 +49,7 @@ namespace MACK.Controllers
         // GET: Vehicles/Create
         public IActionResult Create()
         {
-            ViewData["DrivetrainId"] = new SelectList(_context.Drivetrains, "DrivetrainId", "DrivetrainType");
-            ViewData["ExteriorColourId"] = new SelectList(_context.Colours, "ColourId", "ColourName");
-            ViewData["InteriorColourId"] = new SelectList(_context.Colours, "ColourId", "ColourName");
-            ViewData["SeriesId"] = new SelectList(_context.Series, "SeriesId", "SeriesName");
-            ViewData["TransmissionId"] = new SelectList(_context.Transmissions, "TransmissionId", "TransmissionType");
-            ViewData["VehicleTypeId"] = new SelectList(_context.VehicleTypes, "VehicleTypeId", "TypeName");
+            ViewData["ModelId"] = new SelectList(_context.Models, "ModelId", "ModelName");
             return View();
         }
 
@@ -68,22 +58,18 @@ namespace MACK.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("VehicleId,VIN,Year,SeriesId,VehicleTypeId,EngineCylinderCount,EngineDisplacement,Engine,Fuel,TransmissionId,BodyDoorCount,DrivetrainId,ExteriorColourId,InteriorColourId,CityMPG,HighwayMPG,Weight,Length,Width,Height")] Vehicle vehicle)
+        public async Task<IActionResult> Create([Bind("VehicleId,VIN,Year,Fuel,ExteriorColour,InteriorColour,BodyDoorCount,Weight,Features,Description,Dimensions,IsUsed,IsAutomatic,ModelId")] Vehicle vehicle)
         {
-            if (ModelState.IsValid)
+            ModelState.Remove("Model");//Remove virtuals
+
+            if(ModelState.IsValid)
             {
-                VehicleHandlers.CreateVehicle(vehicle.VIN, vehicle.Year, vehicle.SeriesId,
-                    vehicle.VehicleTypeId, vehicle.EngineCylinderCount, vehicle.EngineDisplacement, vehicle.Engine, vehicle.Fuel,
-                    vehicle.TransmissionId, vehicle.BodyDoorCount, vehicle.DrivetrainId, vehicle.ExteriorColourId, vehicle.InteriorColourId,
-                    vehicle.CityMPG, vehicle.HighwayMPG, vehicle.Weight, vehicle.Length, vehicle.Width, vehicle.Height);
+                VehicleHandlers.CreateVehicle(vehicle.VIN, vehicle.Year, vehicle.Fuel, vehicle.ExteriorColour,
+                    vehicle.InteriorColour, vehicle.BodyDoorCount, vehicle.Weight, vehicle.IsUsed, vehicle.IsAutomatic,
+                    vehicle.Features, vehicle.Description, vehicle.ModelId);
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["DrivetrainId"] = new SelectList(_context.Drivetrains, "DrivetrainId", "DrivetrainType", vehicle.DrivetrainId);
-            ViewData["ExteriorColourId"] = new SelectList(_context.Colours, "ColourId", "ColourName", vehicle.ExteriorColourId);
-            ViewData["InteriorColourId"] = new SelectList(_context.Colours, "ColourId", "ColourName", vehicle.InteriorColourId);
-            ViewData["SeriesId"] = new SelectList(_context.Series, "SeriesId", "SeriesName", vehicle.SeriesId);
-            ViewData["TransmissionId"] = new SelectList(_context.Transmissions, "TransmissionId", "TransmissionType", vehicle.TransmissionId);
-            ViewData["VehicleTypeId"] = new SelectList(_context.VehicleTypes, "VehicleTypeId", "TypeName", vehicle.VehicleTypeId);
+            ViewData["ModelId"] = new SelectList(_context.Models, "ModelId", "ModelName", vehicle.ModelId);
             return View(vehicle);
         }
 
@@ -100,12 +86,7 @@ namespace MACK.Controllers
             {
                 return NotFound();
             }
-            ViewData["DrivetrainId"] = new SelectList(_context.Drivetrains, "DrivetrainId", "DrivetrainType", vehicle.DrivetrainId);
-            ViewData["ExteriorColourId"] = new SelectList(_context.Colours, "ColourId", "ColourName", vehicle.ExteriorColourId);
-            ViewData["InteriorColourId"] = new SelectList(_context.Colours, "ColourId", "ColourName", vehicle.InteriorColourId);
-            ViewData["SeriesId"] = new SelectList(_context.Series, "SeriesId", "SeriesName", vehicle.SeriesId);
-            ViewData["TransmissionId"] = new SelectList(_context.Transmissions, "TransmissionId", "TransmissionType", vehicle.TransmissionId);
-            ViewData["VehicleTypeId"] = new SelectList(_context.VehicleTypes, "VehicleTypeId", "TypeName", vehicle.VehicleTypeId);
+            ViewData["ModelId"] = new SelectList(_context.Models, "ModelId", "ModelName", vehicle.ModelId);
             return View(vehicle);
         }
 
@@ -114,14 +95,15 @@ namespace MACK.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("VehicleId,VIN,Year,SeriesId,VehicleTypeId,EngineCylinderCount,EngineDisplacement,Engine,Fuel,TransmissionId,BodyDoorCount,DrivetrainId,ExteriorColourId,InteriorColourId,CityMPG,HighwayMPG,Weight,Length,Width,Height")] Vehicle vehicle)
+        public async Task<IActionResult> Edit(int id, [Bind("VehicleId,VIN,Year,Fuel,ExteriorColour,InteriorColour,BodyDoorCount,Weight,Features,Description,Dimensions,IsUsed,IsAutomatic,ModelId")] Vehicle vehicle)
         {
             if (id != vehicle.VehicleId)
             {
                 return NotFound();
             }
+            ModelState.Remove("Model");//Remove virtuals
 
-            if (ModelState.IsValid)
+            if(ModelState.IsValid)
             {
                 try
                 {
@@ -140,12 +122,7 @@ namespace MACK.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["DrivetrainId"] = new SelectList(_context.Drivetrains, "DrivetrainId", "DrivetrainType", vehicle.DrivetrainId);
-            ViewData["ExteriorColourId"] = new SelectList(_context.Colours, "ColourId", "ColourName", vehicle.ExteriorColourId);
-            ViewData["InteriorColourId"] = new SelectList(_context.Colours, "ColourId", "ColourName", vehicle.InteriorColourId);
-            ViewData["SeriesId"] = new SelectList(_context.Series, "SeriesId", "SeriesName", vehicle.SeriesId);
-            ViewData["TransmissionId"] = new SelectList(_context.Transmissions, "TransmissionId", "TransmissionType", vehicle.TransmissionId);
-            ViewData["VehicleTypeId"] = new SelectList(_context.VehicleTypes, "VehicleTypeId", "TypeName", vehicle.VehicleTypeId);
+            ViewData["ModelId"] = new SelectList(_context.Models, "ModelId", "ModelName", vehicle.ModelId);
             return View(vehicle);
         }
 
@@ -158,12 +135,7 @@ namespace MACK.Controllers
             }
 
             var vehicle = await _context.Vehicles
-                .Include(v => v.Drivetrain)
-                .Include(v => v.ExteriorColour)
-                .Include(v => v.InteriorColour)
-                .Include(v => v.Series)
-                .Include(v => v.Transmission)
-                .Include(v => v.VehicleType)
+                .Include(v => v.Model)
                 .FirstOrDefaultAsync(m => m.VehicleId == id);
             if (vehicle == null)
             {
@@ -188,6 +160,7 @@ namespace MACK.Controllers
                 VehicleHandlers.DeleteVehicle(vehicle);
             }
             
+            await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 

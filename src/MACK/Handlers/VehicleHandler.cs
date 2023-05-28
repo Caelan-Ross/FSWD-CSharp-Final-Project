@@ -8,10 +8,8 @@ namespace MACK.Handlers
     public static class VehicleHandlers
     {
         // Create
-        public static Vehicle CreateVehicle(string vin, int year, int? seriesId,
-            int vehicleTypeId, int engineCylinderCount, string engineDisplacement, string engine, string fuel,
-            int transmissionId, int bodyDoorCount, int drivetrainId, int exteriorColourId, int interiorColourId,
-            int cityMpg, int highwayMpg, decimal weight, decimal length, decimal width, decimal height)
+        public static Vehicle CreateVehicle(string vin, int year,string fuel, string exteriorColour, string interiorColour, int bodyDoorCount, 
+            int weight, bool isUsed, bool isAutomatic, string features, string description, int modelId)
         {
             using(ApplicationDbContext _context = new ApplicationDbContext())
             {
@@ -19,23 +17,16 @@ namespace MACK.Handlers
                 {
                     VIN = vin,
                     Year = year,
-                    SeriesId = seriesId,
-                    VehicleTypeId = vehicleTypeId,
-                    EngineCylinderCount = engineCylinderCount,
-                    EngineDisplacement = engineDisplacement,
-                    Engine = engine,
                     Fuel = fuel,
-                    TransmissionId = transmissionId,
+                    ExteriorColour = exteriorColour,
+                    InteriorColour = interiorColour,
                     BodyDoorCount = bodyDoorCount,
-                    DrivetrainId = drivetrainId,
-                    ExteriorColourId = exteriorColourId,
-                    InteriorColourId = interiorColourId,
-                    CityMPG = cityMpg,
-                    HighwayMPG = highwayMpg,
                     Weight = weight,
-                    Length = length,
-                    Width = width,
-                    Height = height
+                    Features = features,
+                    Description = description,
+                    IsAutomatic = isAutomatic,
+                    IsUsed = isUsed,
+                    ModelId = modelId
                 };
                 _context.Vehicles.Add(vehicle);
                 _context.SaveChanges();
@@ -77,23 +68,17 @@ namespace MACK.Handlers
 
                 existingVehicle.VIN = vehicle.VIN;
                 existingVehicle.Year = vehicle.Year;
-                existingVehicle.SeriesId = vehicle.SeriesId;
-                existingVehicle.VehicleTypeId = vehicle.VehicleTypeId;
-                existingVehicle.EngineCylinderCount = vehicle.EngineCylinderCount;
-                existingVehicle.EngineDisplacement = vehicle.EngineDisplacement;
-                existingVehicle.Engine = vehicle.Engine;
                 existingVehicle.Fuel = vehicle.Fuel;
-                existingVehicle.TransmissionId = vehicle.TransmissionId;
                 existingVehicle.BodyDoorCount = vehicle.BodyDoorCount;
-                existingVehicle.DrivetrainId = vehicle.DrivetrainId;
-                existingVehicle.ExteriorColourId = vehicle.ExteriorColourId;
-                existingVehicle.InteriorColourId = vehicle.InteriorColourId;
-                existingVehicle.CityMPG = vehicle.CityMPG;
-                existingVehicle.HighwayMPG = vehicle.HighwayMPG;
                 existingVehicle.Weight = vehicle.Weight;
-                existingVehicle.Length = vehicle.Length;
-                existingVehicle.Width = vehicle.Width;
-                existingVehicle.Height = vehicle.Height;
+                existingVehicle.Dimensions = vehicle.Dimensions;
+                existingVehicle.ExteriorColour = vehicle.ExteriorColour;
+                existingVehicle.InteriorColour = vehicle.InteriorColour;
+                existingVehicle.IsUsed = vehicle.IsUsed;
+                existingVehicle.IsAutomatic = vehicle.IsAutomatic;
+                existingVehicle.Features = vehicle.Features;
+                existingVehicle.Description = vehicle.Description;
+                existingVehicle.ModelId = vehicle.ModelId;
 
                 _context.SaveChanges();
 

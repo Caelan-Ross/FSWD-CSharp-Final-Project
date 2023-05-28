@@ -23,13 +23,13 @@ namespace MACK.Models
         [Column("manufacturer_id", TypeName = "int(10)")]
         public int ManufacturerId { get; set; }
 
+        [AllowNull]
+        [InverseProperty(nameof(Vehicle.Model))]
+        public ICollection<Vehicle> Vehicles { get; set; }
+
         [ForeignKey(nameof(ManufacturerId))]
         [InverseProperty(nameof(Models.Manufacturer.Models))]
         public virtual Manufacturer Manufacturer { get; set; }
-
-        [AllowNull]
-        [InverseProperty(nameof(Models.Series.Model))]
-        public ICollection<Series> Series { get; set; }
 
     }
 }

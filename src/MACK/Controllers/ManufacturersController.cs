@@ -36,8 +36,7 @@ namespace MACK.Controllers
                 return NotFound();
             }
 
-            var manufacturer = await _context.Manufacturers
-                .FirstOrDefaultAsync(m => m.ManufacturerId == id);
+            Manufacturer manufacturer = ManufacturerHandlers.GetManufacturerById((int)id);
             if (manufacturer == null)
             {
                 return NotFound();
@@ -59,7 +58,9 @@ namespace MACK.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("ManufacturerId,ManufacturerName")] Manufacturer manufacturer)
         {
-            if (ModelState.IsValid)
+            ModelState.Remove("Models");//Remove virtual lists
+
+            if(ModelState.IsValid)
             {
                 ManufacturerHandlers.CreateManufacturer(manufacturer.ManufacturerName);
                 return RedirectToAction(nameof(Index));
@@ -75,7 +76,7 @@ namespace MACK.Controllers
                 return NotFound();
             }
 
-            var manufacturer = await _context.Manufacturers.FindAsync(id);
+            Manufacturer manufacturer = ManufacturerHandlers.GetManufacturerById((int)id);
             if (manufacturer == null)
             {
                 return NotFound();
@@ -94,8 +95,9 @@ namespace MACK.Controllers
             {
                 return NotFound();
             }
+            ModelState.Remove("Models");//Remove virtual lists
 
-            if (ModelState.IsValid)
+            if(ModelState.IsValid)
             {
                 try
                 {
@@ -125,9 +127,8 @@ namespace MACK.Controllers
                 return NotFound();
             }
 
-            var manufacturer = await _context.Manufacturers
-                .FirstOrDefaultAsync(m => m.ManufacturerId == id);
-            if (manufacturer == null)
+            Manufacturer manufacturer = ManufacturerHandlers.GetManufacturerById((int)id);
+            if(manufacturer == null)
             {
                 return NotFound();
             }
@@ -149,8 +150,7 @@ namespace MACK.Controllers
             {
                 ManufacturerHandlers.DeleteManufacturer(manufacturer);
             }
-            
-            await _context.SaveChangesAsync();
+
             return RedirectToAction(nameof(Index));
         }
 

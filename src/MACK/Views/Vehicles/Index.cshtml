@@ -19,31 +19,7 @@
                 @Html.DisplayNameFor(model => model.Year)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Series)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.VehicleType)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.EngineCylinderCount)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.EngineDisplacement)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Engine)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.Fuel)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Transmission)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.BodyDoorCount)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Drivetrain)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.ExteriorColour)
@@ -52,22 +28,28 @@
                 @Html.DisplayNameFor(model => model.InteriorColour)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.CityMPG)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.HighwayMPG)
+                @Html.DisplayNameFor(model => model.BodyDoorCount)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Weight)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Length)
+                @Html.DisplayNameFor(model => model.Features)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Width)
+                @Html.DisplayNameFor(model => model.Description)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Height)
+                @Html.DisplayNameFor(model => model.Dimensions)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsUsed)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsAutomatic)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Model)
             </th>
             <th></th>
         </tr>
@@ -82,55 +64,37 @@
                 @Html.DisplayFor(modelItem => item.Year)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Series.SeriesName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.VehicleType.TypeName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.EngineCylinderCount)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.EngineDisplacement)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Engine)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.Fuel)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Transmission.TransmissionType)
+                @Html.DisplayFor(modelItem => item.ExteriorColour)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.InteriorColour)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.BodyDoorCount)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Drivetrain.DrivetrainType)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ExteriorColour.ColourName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.InteriorColour.ColourName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CityMPG)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.HighwayMPG)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.Weight)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Length)
+                @Html.DisplayFor(modelItem => item.Features)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Width)
+                @Html.DisplayFor(modelItem => item.Description)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Height)
+                @Html.DisplayFor(modelItem => item.Dimensions)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsUsed)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsAutomatic)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Model.ModelName)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.VehicleId">Edit</a> |

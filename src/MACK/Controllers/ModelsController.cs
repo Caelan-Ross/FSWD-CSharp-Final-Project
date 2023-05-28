@@ -60,7 +60,10 @@ namespace MACK.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("ModelId,ModelName,ManufacturerId")] Model model)
         {
-            if (ModelState.IsValid)
+            ModelState.Remove("Vehicles");//Remove virtuals
+            ModelState.Remove("Manufacturer");//Remove virtuals
+
+            if(ModelState.IsValid)
             {
                 ModelHandlers.CreateModel(model.ModelName, model.ManufacturerId);
                 return RedirectToAction(nameof(Index));
@@ -77,7 +80,7 @@ namespace MACK.Controllers
                 return NotFound();
             }
 
-            var model = await _context.Models.FindAsync(id);
+            Model model = ModelHandlers.GetModelById((int)id);
             if (model == null)
             {
                 return NotFound();
@@ -97,8 +100,10 @@ namespace MACK.Controllers
             {
                 return NotFound();
             }
+            ModelState.Remove("Vehicles");//Remove virtual lists
+            ModelState.Remove("Manufacturer");//Remove virtuals
 
-            if (ModelState.IsValid)
+            if(ModelState.IsValid)
             {
                 try
                 {
@@ -149,13 +154,12 @@ namespace MACK.Controllers
             {
                 return Problem("Entity set 'ApplicationDbContext.Models'  is null.");
             }
-            Model model = ModelHandlers.GetModelById(id);
-            if (model != null)
+            Model model = ModelHandlers.GetModelById((int)id);
+            if(model != null)
             {
                 ModelHandlers.DeleteModel(model);
             }
-            
-            await _context.SaveChangesAsync();
+
             return RedirectToAction(nameof(Index));
         }
 
