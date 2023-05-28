@@ -6,11 +6,12 @@
     <title>@ViewData["Title"] - MACK</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/MACK.styles.css" asp-append-version="true" />
+    @*Font Awesome*@
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm box-shadow">
             <div class="container-fluid">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index"><img src="/images/Mack-Logo.png" class="logo" /></a>
 
@@ -38,6 +39,7 @@
             </div>
         </nav>
     </header>
+    <div class="vehicle-data"><h2>@ViewData["Title"]</h2></div>
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()

@@ -1,15 +1,59 @@
 ﻿@model IEnumerable<MACK.Models.Vehicle>
-
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Vehicle Data";
 }
 
-<h1>Index</h1>
+<div class="vehicles-grid">
+    <div class="vehicle-data-title grid-2">
+        <h2>Vehicles</h2>
+        <button class="btn" id="createBtn" onclick="openCreateDialog(event)">
+            <i class="fas fa-plus"></i>
+        </button>
+    </div>
+    <!-- Vehicle Create Modal -->
+    <div id="dialog-create" class="dialog" style="display: none;">
+        <form>
+            <div class="vehicle-create-card">
+                <h3>Create Vehicle</h3>
+                <img src="images/Vehicle.png" />
+                <ul>
+                    <li>
+                        <label for="vin">VIN:</label>
+                        <input type="text" id="vin" name="vin" required>
+                    </li>
+                    <li>
+                        <label for="year">Year:</label>
+                        <input type="text" id="year" name="year" required>
+                    </li>
+                    <li>
+                        <label for="model">Model:</label>
+                        <input type="text" id="model" name="model" required>
+                    </li>
+                    <li>
+                        <label for="transmission">Transmission:</label>
+                        <input type="text" id="transmission" name="transmission" required>
+                    </li>
+                    <li>
+                        <label for="kilometres">Kilometres:</label>
+                        <input type="text" id="kilometres" name="kilometres" required>
+                    </li>
+                </ul>
+            </div>
+            <button class="btn" id="submitBtn">Submit</button>
+        </form>
+        <button class="dialog-close" onclick="closeDialog()">X</button>
+    </div>
+</div>
 
+
+
+
+
+@*DEFAULT FROM MVC *@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-<table class="table">
+<table class="table text-light">
     <thead>
         <tr>
             <th>
@@ -55,53 +99,54 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.VIN)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Year)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Fuel)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ExteriorColour)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.InteriorColour)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.BodyDoorCount)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Weight)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Features)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Dimensions)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IsUsed)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IsAutomatic)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Model.ModelName)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.VehicleId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.VehicleId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.VehicleId">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.VIN)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Year)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Fuel)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ExteriorColour)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.InteriorColour)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BodyDoorCount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Weight)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Features)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Dimensions)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IsUsed)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IsAutomatic)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Model.ModelName)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.VehicleId">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.VehicleId">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.VehicleId">Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
