@@ -4,6 +4,7 @@
 }
 
 <div class="vehicles-grid">
+    <!-- Heading -->
     <div class="vehicle-data-title flex">
         <h2>Vehicles</h2>
         <button class="btn" id="createBtn" onclick="openCreateDialog(event)">
@@ -12,7 +13,6 @@
     </div>
     <!-- Vehicle Create Modal -->
     <div id="dialog-create" class="dialog" style="display: none;">
-
         <form>
             <div class="vehicle-create-card">
                 <h3>Create Vehicle</h3>
@@ -44,28 +44,58 @@
         </form>
         <button class="dialog-close" onclick="closeDialog()">X</button>
     </div>
+
+
     <!-- Start of CARD/DIALOG -->
     <div class="grid-4">
-        <a href="#" class="card-link" onclick="openDialog(event)">
-            <div class="vehicle-card">
-                <div class="card-header flex">
-                    <h3>Tahoe</h3>
-                    <div class="card-buttons flex">
-                        <button class="btn" id="editBtn"><i class="fas fa-pencil-alt"></i></button>
-                        <button class="btn" id="deleteBtn"><i class="fas fa-trash-alt"></i></button>
+        @*TODO: CREATE A FOR EACH LOOP THAT WILL POPULATE THE CARDS DEPENDING ON VECHICLE DB*@
+        @{
+            foreach (var item in Model)
+            {
+                <a href="#" class="card-link" onclick="openDialog(event)">
+                    <div class="vehicle-card">
+                        <div class="card-header flex">
+                            <h3>@Html.DisplayFor(modelItem => item.Model.ModelName)</h3>
+                            <div class="card-buttons flex">
+                                <button class="btn" id="editBtn"><i class="fas fa-pencil-alt"></i></button>
+                                <button class="btn" id="deleteBtn"><i class="fas fa-trash-alt"></i></button>
+                            </div>
+                        </div>
+                        <img src="images/Vehicle.png" />
+                        <ul>
+                            <li><span>@Html.DisplayNameFor(model => model.VIN): </span> @Html.DisplayFor(modelItem => item.VIN) </li>
+                            <li><span>@Html.DisplayNameFor(model => model.Year): </span> @Html.DisplayFor(modelItem => item.Year) </li>
+                            <li><span>@Html.DisplayNameFor(model => model.ModelId): </span> @Html.DisplayFor(modelItem => item.Model) </li>
+                            <li><span>@Html.DisplayNameFor(model => model.Weight): </span> @Html.DisplayFor(modelItem => item.Weight) </li>
+                        </ul>
                     </div>
-                </div>
-                <img src="images/Vehicle.png" />
-                <ul>
-                    <li><span>VIN: </span> 1234567890ABCDEFG </li>
-                    <li><span>Year : </span> 2023 </li>
-                    <li><span>Model: </span> TAHOE </li>
-                    <li><span>Transmission: </span> AUTOMATIC </li>
-                    <li><span>Kilometers: </span> 2400 </li>
-                </ul>
-            </div>
-        </a>
+                </a>
+            }
+        }
     </div>
+
+    @*  <!-- HTML SINGLE VEHICLE CARD --> Need to put into FOR EACH LOOP Above. This is just for reference -->
+    <div class="grid-4">
+    <a href="#" class="card-link" onclick="openDialog(event)">
+    <div class="vehicle-card">
+    <div class="card-header flex">
+    <h3>Tahoe</h3>
+    <div class="card-buttons flex">
+    <button class="btn" id="editBtn"><i class="fas fa-pencil-alt"></i></button>
+    <button class="btn" id="deleteBtn"><i class="fas fa-trash-alt"></i></button>
+    </div>
+    </div>
+    <img src="images/Vehicle.png" />
+    <ul>
+    <li><span>VIN: </span> 1234567890ABCDEFG </li>
+    <li><span>Year : </span> 2023 </li>
+    <li><span>Model: </span> TAHOE </li>
+    <li><span>Transmission: </span> AUTOMATIC </li>
+    <li><span>Kilometers: </span> 2400 </li>
+    </ul>
+    </div>
+    </a>
+    </div>*@
 </div>
 
 
