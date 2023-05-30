@@ -369,6 +369,10 @@ img {
     padding: 0 2rem;
 }
 
+.vehicle-form {
+    width: auto;
+}
+
 /* Flex */
 .flex {
     display: flex;
