@@ -78,11 +78,11 @@ p {
     background-repeat: no-repeat;
 }
 
-.vehicle-data h2 {
-    font-size: 3rem;
-    margin: 2rem 0 2rem 3rem;
-    color: var(--light-color);
-}
+    .vehicle-data h2 {
+        font-size: 3rem;
+        margin: 2rem 0 2rem 3rem;
+        color: var(--light-color);
+    }
 
 /* Navbar */
 header {
@@ -127,8 +127,7 @@ header {
 }
 
 
-.nav-item:hover
-{
+.nav-item:hover {
     color: var(--off-gray);
 }
 
@@ -136,20 +135,20 @@ header {
     position: relative;
 }
 
-.nav-link::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background-color: #e3e3e3;
-    transition: width 0.3s ease-in-out;
-}
+    .nav-link::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background-color: #e3e3e3;
+        transition: width 0.3s ease-in-out;
+    }
 
-.nav-link:hover::after {
-    width: 100%;
-}
+    .nav-link:hover::after {
+        width: 100%;
+    }
 
 .navbar .welcome span {
     margin-right: 0.6rem;
@@ -165,24 +164,24 @@ header {
     text-decoration: none;
 }
 
-.navbar a li:hover {
-    color: #9f9f9f;
-}
+    .navbar a li:hover {
+        color: #9f9f9f;
+    }
 
-.navbar a li::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background-color: #e3e3e3;
-    transition: width 0.3s ease-in-out;
-}
+    .navbar a li::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background-color: #e3e3e3;
+        transition: width 0.3s ease-in-out;
+    }
 
-.navbar a li:hover::after {
-    width: 100%;
-}
+    .navbar a li:hover::after {
+        width: 100%;
+    }
 
 ul {
     list-style: none;
@@ -247,39 +246,39 @@ img {
     backdrop-filter: blur(8px);
 }
 
-.menu.active {
-    opacity: 1;
-    visibility: visible;
-}
+    .menu.active {
+        opacity: 1;
+        visibility: visible;
+    }
 
-.menu ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
+    .menu ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
 
-.menu li {
-    padding: 10px;
-}
+    .menu li {
+        padding: 10px;
+    }
 
-.menu a {
-    display: block;
-    text-decoration: none;
-    color: var(--light-color);
-    font-family: var(--font-headers);
-}
+    .menu a {
+        display: block;
+        text-decoration: none;
+        color: var(--light-color);
+        font-family: var(--font-headers);
+    }
 
-.menu li:hover {
-    background-color: var(--bg-light);
-}
+    .menu li:hover {
+        background-color: var(--bg-light);
+    }
 
-.menu li:last-child:hover {
-    border-radius: 0 0 10px 10px;
-}
+    .menu li:last-child:hover {
+        border-radius: 0 0 10px 10px;
+    }
 
-.menu li:hover a {
-    color: var(--primary-color);
-}
+    .menu li:hover a {
+        color: var(--primary-color);
+    }
 /*END OF HAMBURGER*/
 
 
@@ -326,20 +325,20 @@ img {
         margin: 1rem auto;
     }
 
-.vehicles-grid h2 {
-    color: var(--light-color);
-    margin: 1rem 0 1rem 2rem;
+
+.vehicle-data-title {
+    margin: 4rem auto;
 }
 
-.vehicle-data-title.flex {
-    justify-content: flex-start;
-}
+    .vehicle-data-title.flex {
+        justify-content: flex-start;
+    }
 
-.vehicle-data-title h2 {
-    margin-right: 10px;
-}
+    .vehicle-data-title h2 {
+        margin-right: 10px;
+    }
 
-.card-header.flex{
+.card-header.flex {
     justify-content: space-between;
     align-items: center;
 }
@@ -772,9 +771,15 @@ img {
     width: 100%;
     padding: 1rem;
     border-radius: 10px;
-    margin: 4rem auto;
+    margin: 0 auto;
 }
 
+.row {
+    background-color: var(--lighter-black);
+    margin: auto;
+    display: flex;
+    justify-content: center;
+}
 
 .round-img {
     border-radius: 50%;
@@ -783,6 +788,24 @@ img {
 /* Forms */
 input {
     margin: 1.2rem 0;
+    height: 3rem;
+}
+
+.control-label {
+    padding-top: 20px;
+}
+
+.model-control {
+margin-bottom: 1.2rem;
+}
+
+.model-control-dropdown {
+    height: 3rem;
+    margin-bottom: 1.2rem;
+}
+
+.form-group {
+    margin-bottom:1.2rem;
 }
 
 .form-text {
@@ -790,6 +813,26 @@ input {
     margin-top: 0.3rem;
     color: #888;
 }
+
+.form-checks {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-top: 1.2rem;
+}
+
+.form-check-input {
+    height: 2rem;
+    width: 2rem;
+    margin-right: 0.5rem;
+}
+
+.form-check-label {
+    display: flex;
+    align-items: center;
+}
+
 
 input[type='text'],
 input[type='email'],

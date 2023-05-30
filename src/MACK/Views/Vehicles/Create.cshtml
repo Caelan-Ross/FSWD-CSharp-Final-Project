@@ -4,13 +4,16 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
+<div class="vehicle-data-title flex">
+    <h2>Vehicles</h2>
+</div>
 
-<h4>Vehicle</h4>
+<h4>Create Vehicle</h4>
 <hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
+<form asp-action="Create">
+    <div class="row">
+        <div class="col-md-4">
+            <!-- First column -->
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="VIN" class="control-label"></label>
@@ -42,6 +45,9 @@
                 <input asp-for="BodyDoorCount" class="form-control" />
                 <span asp-validation-for="BodyDoorCount" class="text-danger"></span>
             </div>
+        </div>
+        <div class="col-md-4">
+            <!-- Second column -->
             <div class="form-group">
                 <label asp-for="Weight" class="control-label"></label>
                 <input asp-for="Weight" class="form-control" />
@@ -62,31 +68,39 @@
                 <input asp-for="Dimensions" class="form-control" />
                 <span asp-validation-for="Dimensions" class="text-danger"></span>
             </div>
-            <div class="form-group form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="IsUsed" /> @Html.DisplayNameFor(model => model.IsUsed)
-                </label>
-            </div>
-            <div class="form-group form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="IsAutomatic" /> @Html.DisplayNameFor(model => model.IsAutomatic)
-                </label>
-            </div>
+
             <div class="form-group">
-                <label asp-for="ModelId" class="control-label"></label>
-                <select asp-for="ModelId" class ="form-control" asp-items="ViewBag.ModelId"></select>
+                <label asp-for="ModelId" class="control-label model-control"></label>
+                <select asp-for="ModelId" class="form-control model-control-dropdown" asp-items="ViewBag.ModelId"></select>
             </div>
+            <div class="form-checks">
+                <div class="form-group form-check">
+                    <label class="form-check-label">
+                        <input class="form-check-input" asp-for="IsUsed" /> @Html.DisplayNameFor(model => model.IsUsed)
+                    </label>
+                </div>
+                <div class="form-group form-check">
+                    <label class="form-check-label">
+                        <input class="form-check-input" asp-for="IsAutomatic" /> @Html.DisplayNameFor(model => model.IsAutomatic)
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12 text-center">
+            <!-- Button column -->
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
-        </form>
+        </div>
     </div>
-</div>
-
+</form>
+<hr />
 <div>
     <a asp-action="Index">Back to List</a>
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }
