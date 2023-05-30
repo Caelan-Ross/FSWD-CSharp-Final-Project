@@ -284,6 +284,51 @@ img {
     }
 /*END OF HAMBURGER*/
 
+/* REGISTRATION PAGE */
+
+.registration .body-container {
+    max-width: 1100px;
+}
+
+.registration h1 {
+    font-size: 40px;
+}
+
+.registration p {
+    margin: 20px 0;
+}
+
+.registration .grid-2 {
+    grid-template-columns: 55% 45%;
+    gap: 30px;
+    overflow: visible;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    overflow: visible;
+}
+
+.registration-form {
+    background: #fff;
+    color: var(--off-black);
+    position: relative;
+    /*top: 60px;*/
+    height: 350px;
+    width: 400px;
+    /*padding: 40px;*/
+    z-index: 100;
+    justify-self: flex-end;
+}
+
+.registration-form.card {
+    background: var(--lighter-black);
+    box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+}
+
+
+
+
+
 
 /* Vehicle Cards */
 .vehicle-card {
