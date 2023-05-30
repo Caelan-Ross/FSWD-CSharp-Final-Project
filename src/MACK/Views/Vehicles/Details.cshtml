@@ -4,93 +4,160 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
-
 <div>
-    <h4>Vehicle</h4>
+    <!-- Vehicle Card -->
+    <div class="vehicle-card card-link">
+        <div class="card-header grid-2">
+            <!-- Vehicle Image-->
+            <img src="~/images/Vehicle.png" />
+            <ul>
+                <li>
+                    <span>@Html.DisplayNameFor(model => model.VIN)</span>
+                    @Html.DisplayFor(modelItem => Model.VIN)
+                </li>
+                <li>
+                    <span>@Html.DisplayNameFor(model => model.Year)</span>
+                    @Html.DisplayFor(modelItem => Model.Year)
+                </li>
+                <li>
+                    <span>@Html.DisplayNameFor(model => model.Fuel)</span>
+                    @Html.DisplayFor(modelItem => Model.Fuel)
+                </li>
+                <li>
+                    <span>@Html.DisplayNameFor(model => model.ExteriorColour)</span>
+                    @Html.DisplayFor(modelItem => Model.ExteriorColour)
+                </li>
+                <li>
+                    <span>@Html.DisplayNameFor(model => model.InteriorColour)</span>
+                    @Html.DisplayFor(modelItem => Model.InteriorColour)
+                </li>
+                <li>
+                    <span>@Html.DisplayNameFor(model => model.BodyDoorCount)</span>
+                    @Html.DisplayFor(modelItem => Model.BodyDoorCount)
+                </li>
+                <li>
+                    <span>@Html.DisplayNameFor(model => model.Weight)</span>
+                    @Html.DisplayFor(modelItem => Model.Weight)
+                </li>
+                <li>
+                    <span>@Html.DisplayNameFor(model => model.Features)</span>
+                    @Html.DisplayFor(modelItem => Model.Features)
+                </li>
+                <li>
+                    <span>@Html.DisplayNameFor(model => model.Description)</span>
+                    @Html.DisplayFor(modelItem => Model.Description)
+                </li>
+                <li>
+                    <span>@Html.DisplayNameFor(model => model.Dimensions)</span>
+                    @Html.DisplayFor(modelItem => Model.Dimensions)
+                </li>
+                <li>
+                    <span>@Html.DisplayNameFor(model => model.IsUsed)</span>
+                    @Html.DisplayFor(modelItem => Model.IsUsed)
+                </li>
+                <li>
+                    <span>@Html.DisplayNameFor(model => model.IsAutomatic)</span>
+                    @Html.DisplayFor(modelItem => Model.IsAutomatic)
+                </li>
+                <li>
+                    <span>@Html.DisplayNameFor(model => model.ModelId)</span>
+                    @Html.DisplayFor(modelItem => Model.ModelId)
+                </li>
+                <li>
+                    <span>@Html.DisplayNameFor(model => model.Model.ModelName)</span>
+                    @Html.DisplayFor(modelItem => Model.Model.ModelName)
+                </li>
+            </ul>
+        </div>
+    </div>
+
+
+    @*
+    <div>
     <hr />
     <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.VIN)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.VIN)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Year)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Year)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Fuel)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Fuel)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ExteriorColour)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ExteriorColour)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.InteriorColour)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.InteriorColour)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.BodyDoorCount)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.BodyDoorCount)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Weight)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Weight)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Features)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Features)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Description)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Dimensions)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Dimensions)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.IsUsed)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.IsUsed)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.IsAutomatic)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.IsAutomatic)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Model)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Model.ModelName)
-        </dd>
+    <dt class = "col-sm-2">
+    @Html.DisplayNameFor(model => model.VIN)
+    </dt>
+    <dd class = "col-sm-10">
+    @Html.DisplayFor(model => model.VIN)
+    </dd>
+    <dt class = "col-sm-2">
+    @Html.DisplayNameFor(model => model.Year)
+    </dt>
+    <dd class = "col-sm-10">
+    @Html.DisplayFor(model => model.Year)
+    </dd>
+    <dt class = "col-sm-2">
+    @Html.DisplayNameFor(model => model.Fuel)
+    </dt>
+    <dd class = "col-sm-10">
+    @Html.DisplayFor(model => model.Fuel)
+    </dd>
+    <dt class = "col-sm-2">
+    @Html.DisplayNameFor(model => model.ExteriorColour)
+    </dt>
+    <dd class = "col-sm-10">
+    @Html.DisplayFor(model => model.ExteriorColour)
+    </dd>
+    <dt class = "col-sm-2">
+    @Html.DisplayNameFor(model => model.InteriorColour)
+    </dt>
+    <dd class = "col-sm-10">
+    @Html.DisplayFor(model => model.InteriorColour)
+    </dd>
+    <dt class = "col-sm-2">
+    @Html.DisplayNameFor(model => model.BodyDoorCount)
+    </dt>
+    <dd class = "col-sm-10">
+    @Html.DisplayFor(model => model.BodyDoorCount)
+    </dd>
+    <dt class = "col-sm-2">
+    @Html.DisplayNameFor(model => model.Weight)
+    </dt>
+    <dd class = "col-sm-10">
+    @Html.DisplayFor(model => model.Weight)
+    </dd>
+    <dt class = "col-sm-2">
+    @Html.DisplayNameFor(model => model.Features)
+    </dt>
+    <dd class = "col-sm-10">
+    @Html.DisplayFor(model => model.Features)
+    </dd>
+    <dt class = "col-sm-2">
+    @Html.DisplayNameFor(model => model.Description)
+    </dt>
+    <dd class = "col-sm-10">
+    @Html.DisplayFor(model => model.Description)
+    </dd>
+    <dt class = "col-sm-2">
+    @Html.DisplayNameFor(model => model.Dimensions)
+    </dt>
+    <dd class = "col-sm-10">
+    @Html.DisplayFor(model => model.Dimensions)
+    </dd>
+    <dt class = "col-sm-2">
+    @Html.DisplayNameFor(model => model.IsUsed)
+    </dt>
+    <dd class = "col-sm-10">
+    @Html.DisplayFor(model => model.IsUsed)
+    </dd>
+    <dt class = "col-sm-2">
+    @Html.DisplayNameFor(model => model.IsAutomatic)
+    </dt>
+    <dd class = "col-sm-10">
+    @Html.DisplayFor(model => model.IsAutomatic)
+    </dd>
+    <dt class = "col-sm-2">
+    @Html.DisplayNameFor(model => model.Model)
+    </dt>
+    <dd class = "col-sm-10">
+    @Html.DisplayFor(model => model.Model.ModelName)
+    </dd>
     </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model?.VehicleId">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    </div>*@
+    <div>
+        <a asp-action="Edit" asp-route-id="@Model?.VehicleId">Edit</a> |
+        <a asp-action="Index">Back to List</a>
+    </div>
 </div>

@@ -33,10 +33,22 @@
                         <img src="images/Vehicle.png" />
                         <!-- Vehicle Details -->
                         <ul>
-                            <li><span>@Html.DisplayNameFor(model => model.VIN):</span>@Html.DisplayFor(modelItem => item.VIN)</li>
-                            <li><span>@Html.DisplayNameFor(model => model.Year):</span>@Html.DisplayFor(modelItem => item.Year)</li>
-                            <li><span>@Html.DisplayNameFor(model => model.ModelId):</span>@Html.DisplayFor(modelItem => item.Model.ModelName)</li>
-                            <li><span>@Html.DisplayNameFor(model => model.Weight):</span>@Html.DisplayFor(modelItem => item.Weight)</li>
+                            <li>
+                                <span>@Html.DisplayNameFor(model => model.VIN):</span>
+                                @Html.DisplayFor(modelItem => item.VIN)
+                            </li>
+                            <li>
+                                <span>@Html.DisplayNameFor(model => model.Year):</span>
+                                @Html.DisplayFor(modelItem => item.Year)
+                            </li>
+                            <li>
+                                <span>@Html.DisplayNameFor(model => model.ModelId):</span>
+                                @Html.DisplayFor(modelItem => item.Model.ModelName)
+                            </li>
+                            <li>
+                                <span>@Html.DisplayNameFor(model => model.Weight):</span>
+                                @Html.DisplayFor(modelItem => item.Weight)
+                            </li>
                         </ul>
                     </a>
                 </div>
