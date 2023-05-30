@@ -45,6 +45,7 @@ body {
 h1, h2, h3 {
     font-family: var(--font-headers);
     font-weight: 300;
+    margin-bottom: 0rem;
 }
 
 h2 {
@@ -298,6 +299,7 @@ img {
     .vehicle-card ul {
         text-align: left;
         margin: auto;
+        padding-left: 0;
         font-family: var(--font-primary);
         color: var(--light-color);
         letter-spacing: 1px;
@@ -341,6 +343,17 @@ img {
 .card-header.flex {
     justify-content: space-between;
     align-items: center;
+}
+
+.vehicle-card ul li {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.vehicle-card ul {
+    margin: 0rem;
+    padding: 0.5rem 1rem;
 }
 
 
@@ -552,6 +565,10 @@ img {
     .card-link h3,
     .card-link ul {
         color: var(--light-color);
+    }
+
+    .card-link + .card-link {
+        margin-left: 0rem;
     }
 
 
@@ -796,7 +813,7 @@ input {
 }
 
 .model-control {
-margin-bottom: 1.2rem;
+    margin-bottom: 1.2rem;
 }
 
 .model-control-dropdown {
@@ -805,7 +822,7 @@ margin-bottom: 1.2rem;
 }
 
 .form-group {
-    margin-bottom:1.2rem;
+    margin-bottom: 1.2rem;
 }
 
 .form-text {

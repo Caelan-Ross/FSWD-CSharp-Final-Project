@@ -13,50 +13,15 @@
             </button>
         </a>
     </div>
-    <!-- Vehicle Create Modal -->
-    @*NOT SURE IF WE NEED THIS*@
-    @*   <div id="dialog-create" class="dialog" style="display: none;">
-    <form>
-    <div class="vehicle-create-card">
-    <h3>Create Vehicle</h3>
-    <img src="/images/Vehicle.png" />
-    <ul>
-    <li>
-    <label for="vin">VIN:</label>
-    <input type="text" id="vin" name="vin" required>
-    </li>
-    <li>
-    <label for="year">Year:</label>
-    <input type="text" id="year" name="year" required>
-    </li>
-    <li>
-    <label for="model">Model:</label>
-    <input type="text" id="model" name="model" required>
-    </li>
-    <li>
-    <label for="transmission">Transmission:</label>
-    <input type="text" id="transmission" name="transmission" required>
-    </li>
-    <li>
-    <label for="kilometres">Kilometres:</label>
-    <input type="text" id="kilometres" name="kilometres" required>
-    </li>
-    </ul>
-    </div>
-    <button class="btn" id="submitBtn">Submit</button>
-    </form>
-    <button class="dialog-close" onclick="closeDialog()">X</button>
-    </div>
-    *@
-
-    <!-- Start of CARD/DIALOG -->
+    <!-- Start of Vehicle CARDS -->
     <div class="grid-4">
-        @*TODO: CREATE A FOR EACH LOOP THAT WILL POPULATE THE CARDS DEPENDING ON VECHICLE DB*@
+        @*FOR EACH LOOP WILL POPULATE THE CARDS DEPENDING ON VECHICLE DB*@
         @{
             foreach (var item in Model)
             {
                 <div class="vehicle-card card-link">
                     <a asp-action="Details" asp-route-id="@item.VehicleId">
+                        <!-- Vehicle Title and Buttons -->
                         <div class="card-header flex">
                             <h3>@Html.DisplayFor(modelItem => item.Model.ModelName)</h3>
                             <div class="card-buttons flex">
@@ -64,47 +29,24 @@
                                 <a asp-action="Delete" asp-route-id="@item.VehicleId"><button class="btn" id="deleteBtn"><i class="fas fa-trash-alt"></i></button></a>
                             </div>
                         </div>
+                        <!-- Vehicle Image -->
                         <img src="images/Vehicle.png" />
+                        <!-- Vehicle Details -->
                         <ul>
-                            <li><span>@Html.DisplayNameFor(model => model.VIN): </span> @Html.DisplayFor(modelItem => item.VIN) </li>
-                            <li><span>@Html.DisplayNameFor(model => model.Year): </span> @Html.DisplayFor(modelItem => item.Year) </li>
-                            <li><span>@Html.DisplayNameFor(model => model.ModelId): </span> @Html.DisplayFor(modelItem => item.Model) </li>
-                            <li><span>@Html.DisplayNameFor(model => model.Weight): </span> @Html.DisplayFor(modelItem => item.Weight) </li>
+                            <li><span>@Html.DisplayNameFor(model => model.VIN):</span>@Html.DisplayFor(modelItem => item.VIN)</li>
+                            <li><span>@Html.DisplayNameFor(model => model.Year):</span>@Html.DisplayFor(modelItem => item.Year)</li>
+                            <li><span>@Html.DisplayNameFor(model => model.ModelId):</span>@Html.DisplayFor(modelItem => item.Model.ModelName)</li>
+                            <li><span>@Html.DisplayNameFor(model => model.Weight):</span>@Html.DisplayFor(modelItem => item.Weight)</li>
                         </ul>
                     </a>
                 </div>
             }
         }
     </div>
-
-
-
-    @*  <!-- HTML SINGLE VEHICLE CARD --> Need to put into FOR EACH LOOP Above. This is just for reference -->
-    <div class="grid-4">
-    <a href="#" class="card-link" onclick="openDialog(event)">
-    <div class="vehicle-card">
-    <div class="card-header flex">
-    <h3>Tahoe</h3>
-    <div class="card-buttons flex">
-    <button class="btn" id="editBtn"><i class="fas fa-pencil-alt"></i></button>
-    <button class="btn" id="deleteBtn"><i class="fas fa-trash-alt"></i></button>
-    </div>
-    </div>
-    <img src="images/Vehicle.png" />
-    <ul>
-    <li><span>VIN: </span> 1234567890ABCDEFG </li>
-    <li><span>Year : </span> 2023 </li>
-    <li><span>Model: </span> TAHOE </li>
-    <li><span>Transmission: </span> AUTOMATIC </li>
-    <li><span>Kilometers: </span> 2400 </li>
-    </ul>
-    </div>
-    </a>
-    </div>*@
 </div>
 
 @*DEFAULT FROM MVC  -- This will eventually be gone *@
-<p>
+@*<p>
     <a asp-action="Create">Create New</a>
 </p>
 <table class="table text-light">
@@ -203,4 +145,4 @@
             </tr>
         }
     </tbody>
-</table>
+</table>*@
