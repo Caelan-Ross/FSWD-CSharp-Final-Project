@@ -48,6 +48,10 @@ h1, h2, h3 {
     margin-bottom: 0rem;
 }
 
+h1 {
+    margin: 2rem 0;
+}
+
 h2 {
     font-size: 2rem;
     line-height: 1.4;
@@ -369,9 +373,41 @@ img {
     padding: 0 2rem;
 }
 
+.index-card {
+    margin: 2rem auto;
+    padding: 2rem;
+}
+
 .vehicle-form {
     width: auto;
+    border-radius: 10px;
 }
+
+.home-copy {
+    padding: 2rem;
+}
+
+.home-copy h2 {
+    margin-left: 0;
+    padding-left: 0;
+}
+
+    .home-copy p {
+        width: 80%;
+        text-align: left;
+        margin-left: 0;
+    }
+
+.login-register {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 1rem 0;
+}
+
+    .login-register a {
+        color: var(--light-color);
+    }
 
 /* Flex */
 .flex {
@@ -805,7 +841,7 @@ img {
 }
 
 .round-img {
-    border-radius: 50%;
+    border-radius: 10px;
 }
 
 /* Forms */
