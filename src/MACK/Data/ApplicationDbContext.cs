@@ -77,14 +77,14 @@ namespace MACK
                         Fuel = "TestFuel",
                         ExteriorColour = "ExtTest",
                         InteriorColour = "IntTest",
-                        Weight = 4000,
                         BodyDoorCount = 1,
-                        Dimensions = "1x1x1",
                         IsAutomatic = true,
                         IsUsed = true,
                         Features = "Test features",
                         Description = "Test description",
-                        ModelId = -1
+                        ModelId = -1,
+                        StockNumber = "A1",
+                        Price = 0.1
                     }
                 );
         }

@@ -9,7 +9,7 @@ namespace MACK.Handlers
     {
         // Create
         public static Vehicle CreateVehicle(string vin, int year,string fuel, string exteriorColour, string interiorColour, int bodyDoorCount, 
-            int weight, bool isUsed, bool isAutomatic, string features, string description, int modelId)
+            bool isUsed, bool isAutomatic, string features, string description, int modelId, double price, string stockNumber)
         {
             using(ApplicationDbContext _context = new ApplicationDbContext())
             {
@@ -21,12 +21,13 @@ namespace MACK.Handlers
                     ExteriorColour = exteriorColour,
                     InteriorColour = interiorColour,
                     BodyDoorCount = bodyDoorCount,
-                    Weight = weight,
                     Features = features,
                     Description = description,
                     IsAutomatic = isAutomatic,
                     IsUsed = isUsed,
-                    ModelId = modelId
+                    ModelId = modelId,
+                    Price = price,
+                    StockNumber = stockNumber
                 };
                 _context.Vehicles.Add(vehicle);
                 _context.SaveChanges();
@@ -70,8 +71,6 @@ namespace MACK.Handlers
                 existingVehicle.Year = vehicle.Year;
                 existingVehicle.Fuel = vehicle.Fuel;
                 existingVehicle.BodyDoorCount = vehicle.BodyDoorCount;
-                existingVehicle.Weight = vehicle.Weight;
-                existingVehicle.Dimensions = vehicle.Dimensions;
                 existingVehicle.ExteriorColour = vehicle.ExteriorColour;
                 existingVehicle.InteriorColour = vehicle.InteriorColour;
                 existingVehicle.IsUsed = vehicle.IsUsed;
@@ -79,6 +78,8 @@ namespace MACK.Handlers
                 existingVehicle.Features = vehicle.Features;
                 existingVehicle.Description = vehicle.Description;
                 existingVehicle.ModelId = vehicle.ModelId;
+                existingVehicle.Price = vehicle.Price;
+                existingVehicle.StockNumber = vehicle.StockNumber;
 
                 _context.SaveChanges();
 
@@ -100,6 +101,22 @@ namespace MACK.Handlers
                 _context.Vehicles.Remove(existingVehicle);
                 _context.SaveChanges();
             }
+        }
+
+        public static bool IfVehicleExists(string vin, int modelId)
+        {
+            bool exists = false;
+
+            using(ApplicationDbContext _context = new ApplicationDbContext())
+            {
+                try
+                {
+                    Vehicle vehicle = _context.Vehicles.First(m => m.VIN == vin && m.ModelId == modelId);
+                    exists = true;
+                }catch { }
+            }
+
+            return exists;
         }
     }
 }

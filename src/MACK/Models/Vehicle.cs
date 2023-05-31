@@ -28,6 +28,14 @@ namespace MACK.Models
         public int Year { get; set; }
 
         [Required]
+        [Column("price")]
+        public double Price { get; set; }
+
+        [Required]
+        [Column("stock_number", TypeName = "varchar(24)")]
+        public string StockNumber { get; set; }
+
+        [Required]
         [Column("fuel", TypeName = "varchar(128)")]
         public string Fuel { get; set; }
 
@@ -44,20 +52,12 @@ namespace MACK.Models
         public int BodyDoorCount { get; set; }
 
         [Required]
-        [Column("weight", TypeName = "int(5)")]
-        public int Weight { get; set; }
-
-        [Required]
         [Column("features", TypeName = "varchar(128)")]
         public string Features { get; set; }
 
         [Required]
         [Column("description", TypeName = "varchar(128)")]
         public string Description { get; set; }
-
-        [Required]
-        [Column("dimensions", TypeName = "varchar(128)")]
-        public string Dimensions { get; set; }
 
         [Required]
         [Column("is_used")]
