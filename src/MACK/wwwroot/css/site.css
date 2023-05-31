@@ -305,7 +305,7 @@ img {
 .vehicle-card {
     width: 100%;
     padding: 1rem;
-    margin: 0;
+    margin: 4rem auto;
     text-align: center;
     background: var(--lighter-black);
     backdrop-filter: blur(8px);
@@ -345,10 +345,13 @@ img {
         margin: 1rem auto;
     }
 
+    .grid-4 .vehicle-card:hover {
+        outline: 1px solid var(--primary-color);
+    }
 
-.vehicle-data-title {
-    margin: 4rem auto;
-}
+    .vehicle-data-title {
+        margin: 4rem auto;
+    }
 
     .vehicle-data-title.flex {
         justify-content: flex-start;
@@ -652,10 +655,9 @@ img {
     background-color: var(--primary-color);
 }
 
-/*.card .icons button.icon-button:first-child {
-    margin-right: 20px;*/
-    /* Additional styles for the first button */
-/*}*/
+#editBtn {
+    margin-right: .5rem;
+}
 
 .crud-btns {
     display: flex;
