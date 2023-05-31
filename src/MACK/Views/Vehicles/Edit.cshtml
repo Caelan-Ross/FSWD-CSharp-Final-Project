@@ -47,11 +47,6 @@
         </div>
         <div class="col-md-4">
             <div class="form-group">
-                <label asp-for="Weight" class="control-label"></label>
-                <input asp-for="Weight" class="form-control" />
-                <span asp-validation-for="Weight" class="text-danger"></span>
-            </div>
-            <div class="form-group">
                 <label asp-for="Features" class="control-label"></label>
                 <input asp-for="Features" class="form-control" />
                 <span asp-validation-for="Features" class="text-danger"></span>
@@ -61,11 +56,25 @@
                 <input asp-for="Description" class="form-control" />
                 <span asp-validation-for="Description" class="text-danger"></span>
             </div>
+<<<<<<< HEAD
             <div class="form-group">
                 <label asp-for="Dimensions" class="control-label"></label>
                 <input asp-for="Dimensions" class="form-control" />
                 <span asp-validation-for="Dimensions" class="text-danger"></span>
             </div>            <div class="form-group">
+=======
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="IsUsed" /> @Html.DisplayNameFor(model => model.IsUsed)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="IsAutomatic" /> @Html.DisplayNameFor(model => model.IsAutomatic)
+                </label>
+            </div>
+            <div class="form-group">
+>>>>>>> 66a9a29e17298249e670e4988bb6e746db5ce59d
                 <label asp-for="ModelId" class="control-label"></label>
                 <select asp-for="ModelId" class="form-control" asp-items="ViewBag.ModelId"></select>
                 <span asp-validation-for="ModelId" class="text-danger"></span>

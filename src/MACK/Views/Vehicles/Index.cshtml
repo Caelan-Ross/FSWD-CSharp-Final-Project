@@ -83,16 +83,10 @@
                 @Html.DisplayNameFor(model => model.BodyDoorCount)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Weight)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.Features)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Description)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Dimensions)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.IsUsed)
@@ -107,6 +101,7 @@
         </tr>
     </thead>
     <tbody>
+<<<<<<< HEAD
         @foreach (var item in Model)
         {
             <tr>
@@ -156,5 +151,49 @@
                 </td>
             </tr>
         }
+=======
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.VIN)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Year)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fuel)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ExteriorColour)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.InteriorColour)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BodyDoorCount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Features)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsUsed)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsAutomatic)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Model.ModelName)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.VehicleId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.VehicleId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.VehicleId">Delete</a>
+            </td>
+        </tr>
+}
+>>>>>>> 66a9a29e17298249e670e4988bb6e746db5ce59d
     </tbody>
 </table>*@
