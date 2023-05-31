@@ -3,10 +3,15 @@
 @{
     ViewData["Title"] = "Edit";
 }
+
+<div class="vehicle-data-title flex">
+    <h2>Edit Vehicle</h2>
+</div>
 <hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Edit">
+<form asp-action="Edit">
+    <div class="row vehicle-form">
+        <div class="col-md-4">
+
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="VehicleId" />
             <div class="form-group">
@@ -39,6 +44,8 @@
                 <input asp-for="BodyDoorCount" class="form-control" />
                 <span asp-validation-for="BodyDoorCount" class="text-danger"></span>
             </div>
+        </div>
+        <div class="col-md-4">
             <div class="form-group">
                 <label asp-for="Weight" class="control-label"></label>
                 <input asp-for="Weight" class="form-control" />
@@ -58,33 +65,38 @@
                 <label asp-for="Dimensions" class="control-label"></label>
                 <input asp-for="Dimensions" class="form-control" />
                 <span asp-validation-for="Dimensions" class="text-danger"></span>
-            </div>
-            <div class="form-group form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="IsUsed" /> @Html.DisplayNameFor(model => model.IsUsed)
-                </label>
-            </div>
-            <div class="form-group form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="IsAutomatic" /> @Html.DisplayNameFor(model => model.IsAutomatic)
-                </label>
-            </div>
-            <div class="form-group">
+            </div>            <div class="form-group">
                 <label asp-for="ModelId" class="control-label"></label>
                 <select asp-for="ModelId" class="form-control" asp-items="ViewBag.ModelId"></select>
                 <span asp-validation-for="ModelId" class="text-danger"></span>
             </div>
+            <div class="form-checks">
+                <div class="form-group form-check">
+                    <label class="form-check-label">
+                        <input class="form-check-input" asp-for="IsUsed" /> @Html.DisplayNameFor(model => model.IsUsed)
+                    </label>
+                </div>
+                <div class="form-group form-check">
+                    <label class="form-check-label">
+                        <input class="form-check-input" asp-for="IsAutomatic" /> @Html.DisplayNameFor(model => model.IsAutomatic)
+                    </label>
+                </div>
+            </div>
+
+        </div> <div class="col-md-12 text-center">
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>
-        </form>
+        </div>
     </div>
-</div>
-
+</form>
+<hr />
 <div>
     <a asp-action="Index">Back to List</a>
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }
