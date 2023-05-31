@@ -56,7 +56,6 @@ h2 {
     font-size: 2rem;
     line-height: 1.4;
     text-align: left;
-    padding-left: 1rem;
 }
 
 a {
@@ -70,10 +69,13 @@ p {
     text-align: left;
 }
 
+.page-header {
+    padding-left: 1rem;
+}
+
 /****************************************
 *          PAGE STYLING                 *
 *****************************************/
-
 /* Banner */
 .vehicle-data {
     width: 100%;
@@ -393,14 +395,18 @@ img {
     border-radius: 10px;
 }
 
+.vehicle-column {
+    margin: 0 2rem;
+}
+
 .home-copy {
     padding: 2rem
 }
 
-.home-copy h2 {
-    margin-left: 0;
-    padding-left: 0;
-}
+    .home-copy h2 {
+        margin-left: 0;
+        padding-left: 0;
+    }
 
     .home-copy p {
         width: 80%;
@@ -645,6 +651,11 @@ img {
     box-shadow: var(--inset-unclicked);
     background-color: var(--primary-color);
 }
+
+/*.card .icons button.icon-button:first-child {
+    margin-right: 20px;*/
+    /* Additional styles for the first button */
+/*}*/
 
 .crud-btns {
     display: flex;

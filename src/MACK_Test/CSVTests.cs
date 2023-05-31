@@ -7,7 +7,7 @@ namespace MACK_Test
         [Fact]
         public void CSVTest()
         {
-            DataTable dt = MACK.Handlers.CSVHandler.GetDataTableFromCsv("C:\\Users\\mintiefresh\\Downloads\\CSV Inventory - Inventory.csv");
+            DataTable dt = MACK.Handlers.CSVHandler.GetDataTableFromCsv("C:\\Users\\kevin\\Downloads\\CSV Inventory - Inventory.csv");
             MACK.Handlers.CSVHandler.ConvertDatatableToDb(dt);
         }
     }

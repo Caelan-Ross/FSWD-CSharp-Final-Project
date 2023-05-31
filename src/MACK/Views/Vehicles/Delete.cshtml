@@ -3,220 +3,95 @@
 @{
     ViewData["Title"] = "Delete";
 }
-<h3>Are you sure you want to delete this?</h3>
+<div class="vehicle-data-title flex">
+    <h2>Are you sure you want to delete this?</h2>
+</div>
 <div>
     <!-- Vehicle Card -->
     <div class="vehicle-card card-link">
-        <div class="card-header grid-2">
-            <!-- Vehicle Image-->
-            <img src="~/images/Vehicle.png" />
-            <ul>
-                <li>
-                    <span>@Html.DisplayNameFor(model => model.VIN)</span>
-                    @Html.DisplayFor(modelItem => Model.VIN)
-                </li>
-                <li>
-                    <span>@Html.DisplayNameFor(model => model.Year)</span>
-                    @Html.DisplayFor(modelItem => Model.Year)
-                </li>
-                <li>
-                    <span>@Html.DisplayNameFor(model => model.Fuel)</span>
-                    @Html.DisplayFor(modelItem => Model.Fuel)
-                </li>
-                <li>
-                    <span>@Html.DisplayNameFor(model => model.ExteriorColour)</span>
-                    @Html.DisplayFor(modelItem => Model.ExteriorColour)
-                </li>
-                <li>
-                    <span>@Html.DisplayNameFor(model => model.InteriorColour)</span>
-                    @Html.DisplayFor(modelItem => Model.InteriorColour)
-                </li>
-                <li>
-                    <span>@Html.DisplayNameFor(model => model.BodyDoorCount)</span>
-                    @Html.DisplayFor(modelItem => Model.BodyDoorCount)
-                </li>
-                <li>
-                    <span>@Html.DisplayNameFor(model => model.Features)</span>
-                    @Html.DisplayFor(modelItem => Model.Features)
-                </li>
-                <li>
-                    <span>@Html.DisplayNameFor(model => model.Description)</span>
-                    @Html.DisplayFor(modelItem => Model.Description)
-                </li>
-                <li>
-                    <span>@Html.DisplayNameFor(model => model.IsUsed)</span>
-                    @Html.DisplayFor(modelItem => Model.IsUsed)
-                </li>
-                <li>
-                    <span>@Html.DisplayNameFor(model => model.IsAutomatic)</span>
-                    @Html.DisplayFor(modelItem => Model.IsAutomatic)
-                </li>
-                <li>
-                    <span>@Html.DisplayNameFor(model => model.ModelId)</span>
-                    @Html.DisplayFor(modelItem => Model.ModelId)
-                </li>
-                <li>
-                    <span>@Html.DisplayNameFor(model => model.Model.ModelName)</span>
-                    @Html.DisplayFor(modelItem => Model.Model.ModelName)
-                </li>
-            </ul>
+        <!-- Vehicle Image-->
+        <div class="row vehicle-form">
+            <div class="col-md-4 vehicle-column">
+                <!-- First column -->
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="VIN" class="control-label"></label>
+                    <input asp-for="VIN" class="form-control" readonly="readonly"/>
+                    <span asp-validation-for="VIN" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Year" class="control-label"></label>
+                    <input asp-for="Year" class="form-control" readonly="readonly" />
+                    <span asp-validation-for="Year" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Fuel" class="control-label"></label>
+                    <input asp-for="Fuel" class="form-control" readonly="readonly" />
+                    <span asp-validation-for="Fuel" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ExteriorColour" class="control-label"></label>
+                    <input asp-for="ExteriorColour" class="form-control" readonly="readonly" />
+                    <span asp-validation-for="ExteriorColour" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="InteriorColour" class="control-label"></label>
+                    <input asp-for="InteriorColour" class="form-control" readonly="readonly" />
+                    <span asp-validation-for="InteriorColour" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="BodyDoorCount" class="control-label"></label>
+                    <input asp-for="BodyDoorCount" class="form-control" readonly="readonly" />
+                    <span asp-validation-for="BodyDoorCount" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-md-4 vehicle-column">
+                <!-- Second column -->
+                <div class="form-group">
+                    <label asp-for="Features" class="control-label"></label>
+                    <input asp-for="Features" class="form-control" readonly="readonly" />
+                    <span asp-validation-for="Features" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Description" class="control-label"></label>
+                    <input asp-for="Description" class="form-control" readonly="readonly" />
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ModelId" class="control-label model-control"></label>
+                    <select asp-for="ModelId" class="form-control model-control-dropdown" asp-items="ViewBag.ModelId" readonly="readonly"></select>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Price" class="control-label"></label>
+                    <input asp-for="Price" class="form-control" readonly="readonly" />
+                    <span asp-validation-for="Price" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="StockNumber" class="control-label"></label>
+                    <input asp-for="StockNumber" class="form-control" readonly="readonly" />
+                    <span asp-validation-for="StockNumber" class="text-danger"></span>
+                </div>
+                <div class="form-group form-check">
+                    <label class="form-check-label">
+                        <input class="form-check-input my-2" asp-for="IsUsed" disabled /> @Html.DisplayNameFor(model => model.IsUsed)
+                    </label>
+                </div>
+                <div class="form-group form-check">
+                    <label class="form-check-label">
+                        <input class="form-check-input my-2" asp-for="IsAutomatic" disabled /> @Html.DisplayNameFor(model => model.IsAutomatic)
+                    </label>
+                </div>
+            </div>
+
+        </div> <div class="col-md-12 text-center">
+            <!-- Button column -->
+            <div class="form-group">
+                <form asp-action="Delete">
+                    <input type="hidden" asp-for="VehicleId" />
+                    <input type="submit" value="Delete" class="btn btn-primary" /> |
+                    <a asp-action="Index">Back to List</a>
+                </form>
+            </div>
         </div>
     </div>
-
-    @*    <hr />
-    <dl class="row">
-<<<<<<< HEAD
-    <dt class = "col-sm-2">
-    @Html.DisplayNameFor(model => model.VIN)
-    </dt>
-    <dd class = "col-sm-10">
-    @Html.DisplayFor(model => model.VIN)
-    </dd>
-    <dt class = "col-sm-2">
-    @Html.DisplayNameFor(model => model.Year)
-    </dt>
-    <dd class = "col-sm-10">
-    @Html.DisplayFor(model => model.Year)
-    </dd>
-    <dt class = "col-sm-2">
-    @Html.DisplayNameFor(model => model.Fuel)
-    </dt>
-    <dd class = "col-sm-10">
-    @Html.DisplayFor(model => model.Fuel)
-    </dd>
-    <dt class = "col-sm-2">
-    @Html.DisplayNameFor(model => model.ExteriorColour)
-    </dt>
-    <dd class = "col-sm-10">
-    @Html.DisplayFor(model => model.ExteriorColour)
-    </dd>
-    <dt class = "col-sm-2">
-    @Html.DisplayNameFor(model => model.InteriorColour)
-    </dt>
-    <dd class = "col-sm-10">
-    @Html.DisplayFor(model => model.InteriorColour)
-    </dd>
-    <dt class = "col-sm-2">
-    @Html.DisplayNameFor(model => model.BodyDoorCount)
-    </dt>
-    <dd class = "col-sm-10">
-    @Html.DisplayFor(model => model.BodyDoorCount)
-    </dd>
-    <dt class = "col-sm-2">
-    @Html.DisplayNameFor(model => model.Weight)
-    </dt>
-    <dd class = "col-sm-10">
-    @Html.DisplayFor(model => model.Weight)
-    </dd>
-    <dt class = "col-sm-2">
-    @Html.DisplayNameFor(model => model.Features)
-    </dt>
-    <dd class = "col-sm-10">
-    @Html.DisplayFor(model => model.Features)
-    </dd>
-    <dt class = "col-sm-2">
-    @Html.DisplayNameFor(model => model.Description)
-    </dt>
-    <dd class = "col-sm-10">
-    @Html.DisplayFor(model => model.Description)
-    </dd>
-    <dt class = "col-sm-2">
-    @Html.DisplayNameFor(model => model.Dimensions)
-    </dt>
-    <dd class = "col-sm-10">
-    @Html.DisplayFor(model => model.Dimensions)
-    </dd>
-    <dt class = "col-sm-2">
-    @Html.DisplayNameFor(model => model.IsUsed)
-    </dt>
-    <dd class = "col-sm-10">
-    @Html.DisplayFor(model => model.IsUsed)
-    </dd>
-    <dt class = "col-sm-2">
-    @Html.DisplayNameFor(model => model.IsAutomatic)
-    </dt>
-    <dd class = "col-sm-10">
-    @Html.DisplayFor(model => model.IsAutomatic)
-    </dd>
-    <dt class = "col-sm-2">
-    @Html.DisplayNameFor(model => model.Model)
-    </dt>
-    <dd class = "col-sm-10">
-    @Html.DisplayFor(model => model.Model.ModelName)
-    </dd>
-=======
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.VIN)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.VIN)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Year)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Year)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Fuel)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Fuel)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ExteriorColour)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ExteriorColour)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.InteriorColour)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.InteriorColour)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.BodyDoorCount)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.BodyDoorCount)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Features)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Features)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Description)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.IsUsed)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.IsUsed)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.IsAutomatic)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.IsAutomatic)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Model)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Model.ModelName)
-        </dd>
->>>>>>> 66a9a29e17298249e670e4988bb6e746db5ce59d
-    </dl>
-    *@
-    <form asp-action="Delete">
-        <input type="hidden" asp-for="VehicleId" />
-        <input type="submit" value="Delete" class="btn btn-danger" /> |
-        <a asp-action="Index">Back to List</a>
-    </form>
 </div>
