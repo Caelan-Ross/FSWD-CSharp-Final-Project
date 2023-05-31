@@ -34,6 +34,14 @@
                         <!-- Vehicle Details -->
                         <ul>
                             <li>
+                                <span>@Html.DisplayNameFor(model => model.Price):</span>
+                                @Html.DisplayFor(modelItem => item.Price)
+                            </li>
+                            <li>
+                                <span>@Html.DisplayNameFor(model => model.StockNumber):</span>
+                                @Html.DisplayFor(modelItem => item.StockNumber)
+                            </li>
+                            <li>
                                 <span>@Html.DisplayNameFor(model => model.VIN):</span>
                                 @Html.DisplayFor(modelItem => item.VIN)
                             </li>
@@ -42,15 +50,7 @@
                                 @Html.DisplayFor(modelItem => item.Year)
                             </li>
                             <li>
-                                <span>@Html.DisplayNameFor(model => model.StockNumber):</span>
-                                @Html.DisplayFor(modelItem => item.StockNumber)
-                            </li>
-                            <li>
-                                <span>@Html.DisplayNameFor(model => model.Price):</span>
-                                @Html.DisplayFor(modelItem => item.Price)
-                            </li>
-                            <li>
-                                <span>@Html.DisplayNameFor(model => model.Model.Manufacturer.ManufacturerName):</span>
+                                <span>@Html.DisplayNameFor(model => model.Model.Manufacturer):</span>
                                 @Html.DisplayFor(modelItem => item.Model.Manufacturer.ManufacturerName)
                             </li>
                         </ul>
@@ -60,144 +60,3 @@
         }
     </div>
 </div>
-
-@*DEFAULT FROM MVC  -- This will eventually be gone *@
-@*<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table text-light">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.VIN)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Year)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Fuel)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ExteriorColour)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.InteriorColour)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.BodyDoorCount)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Features)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Description)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IsUsed)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IsAutomatic)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Model)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-<<<<<<< HEAD
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.VIN)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Year)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Fuel)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ExteriorColour)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.InteriorColour)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.BodyDoorCount)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Weight)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Features)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Description)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Dimensions)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.IsUsed)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.IsAutomatic)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Model.ModelName)
-                </td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.VehicleId">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.VehicleId">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.VehicleId">Delete</a>
-                </td>
-            </tr>
-        }
-=======
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.VIN)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Year)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Fuel)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ExteriorColour)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.InteriorColour)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.BodyDoorCount)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Features)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IsUsed)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IsAutomatic)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Model.ModelName)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.VehicleId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.VehicleId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.VehicleId">Delete</a>
-            </td>
-        </tr>
-}
->>>>>>> 66a9a29e17298249e670e4988bb6e746db5ce59d
-    </tbody>
-</table>*@
