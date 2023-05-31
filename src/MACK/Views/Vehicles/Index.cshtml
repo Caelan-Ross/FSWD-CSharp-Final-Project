@@ -42,8 +42,16 @@
                                 @Html.DisplayFor(modelItem => item.Year)
                             </li>
                             <li>
-                                <span>@Html.DisplayNameFor(model => model.ModelId):</span>
-                                @Html.DisplayFor(modelItem => item.Model.ModelName)
+                                <span>@Html.DisplayNameFor(model => model.StockNumber):</span>
+                                @Html.DisplayFor(modelItem => item.StockNumber)
+                            </li>
+                            <li>
+                                <span>@Html.DisplayNameFor(model => model.Price):</span>
+                                @Html.DisplayFor(modelItem => item.Price)
+                            </li>
+                            <li>
+                                <span>@Html.DisplayNameFor(model => model.Model.Manufacturer.ManufacturerName):</span>
+                                @Html.DisplayFor(modelItem => item.Model.Manufacturer.ManufacturerName)
                             </li>
                         </ul>
                     </a>
