@@ -76,5 +76,26 @@ namespace MACK.Handlers
                 _context.SaveChanges();
             }
         }
+
+        public static Manufacturer IfManufacturerExists(string name)
+        {
+            Manufacturer manufacturer = new Manufacturer();
+
+            using(ApplicationDbContext _context = new ApplicationDbContext())
+            {
+                try
+                {
+                    manufacturer = _context.Manufacturers.First(m => m.ManufacturerName == name);
+
+                }
+                catch
+                {
+                    manufacturer = CreateManufacturer(name);
+
+                }
+            }
+
+            return(manufacturer);
+        }
     }
 }

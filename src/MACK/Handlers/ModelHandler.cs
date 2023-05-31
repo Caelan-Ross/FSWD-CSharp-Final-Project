@@ -78,5 +78,25 @@ namespace MACK.Handlers
                 _context.SaveChanges();
             }
         }
+
+        public static Model IfModelExists(string name, int manufacturerId)
+        {
+            Model model = new Model();
+
+            using(ApplicationDbContext _context = new ApplicationDbContext())
+            {
+                try
+                {
+                    model = _context.Models.First(m => m.ModelName == name && m.ManufacturerId == manufacturerId);
+                }
+                catch
+                {
+                    model = CreateModel(name, manufacturerId);
+
+                }
+            }
+
+            return (model);
+        }
     }
 }

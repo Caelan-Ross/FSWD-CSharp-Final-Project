@@ -65,8 +65,8 @@ namespace MACK.Controllers
             if(ModelState.IsValid)
             {
                 VehicleHandlers.CreateVehicle(vehicle.VIN, vehicle.Year, vehicle.Fuel, vehicle.ExteriorColour,
-                    vehicle.InteriorColour, vehicle.BodyDoorCount, vehicle.Weight, vehicle.IsUsed, vehicle.IsAutomatic,
-                    vehicle.Features, vehicle.Description, vehicle.ModelId);
+                    vehicle.InteriorColour, vehicle.BodyDoorCount, vehicle.IsUsed, vehicle.IsAutomatic,
+                    vehicle.Features, vehicle.Description, vehicle.ModelId, vehicle.Price, vehicle.StockNumber);
                 return RedirectToAction(nameof(Index));
             }
             ViewData["ModelId"] = new SelectList(_context.Models, "ModelId", "ModelName", vehicle.ModelId);
