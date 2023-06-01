@@ -197,6 +197,20 @@ footer {
         width: 100%;
     }
 
+    .navbar a li:not(#logout-button):hover::after {
+        width: 100%;
+    }
+
+#logout-button {
+    background: var(--bg-light);
+    color: var(--primary-color);
+}
+
+#logout-button:hover::after {
+    width: 0;
+}
+
+
 ul {
     list-style: none;
 }
@@ -294,6 +308,11 @@ img {
         color: var(--primary-color);
     }
 /*END OF HAMBURGER*/
+
+/* REgistration Page */
+.vehicle-data-title .home-copy p {
+    width: 100%;
+}
 
 /* REGISTRATION PAGE */
 .checkbox-wrapper {
