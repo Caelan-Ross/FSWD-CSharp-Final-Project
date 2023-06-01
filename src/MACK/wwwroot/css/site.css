@@ -885,11 +885,11 @@ input {
     height: 3rem;
     margin-bottom: 1.2rem;
 }
-
+/*
 .form-group {
     margin-bottom: 1.2rem;
 }
-
+*/
 .form-text {
     display: block;
     margin-top: 0.3rem;
@@ -899,9 +899,11 @@ input {
 .form-checks {
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    /*justify-content: space-evenly;*/
+    justify-content: start;
     align-items: center;
-    margin-top: 1.2rem;
+    /*margin-top: 1.2rem;*/
+    gap: 1rem;
 }
 
 .form-check-input {
