@@ -22,6 +22,7 @@
     --success-color: #28a745;
     --font-primary: 'Mulish', sans-serif;
     --font-headers: 'Saira', sans-serif;
+    --form-dark-background: #181a1b;
 }
 
 * {
@@ -942,6 +943,18 @@ input {
 .form-check-label {
     display: flex;
     align-items: center;
+}
+
+.form-label {
+    color: var(--darker-black);
+}
+
+.checkbox .form-label {
+    color: var(--bg-light);
+}
+
+input .Input_Email{
+    color: var(--darker-black);
 }
 
 
