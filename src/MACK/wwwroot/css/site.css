@@ -305,7 +305,7 @@ img {
 .vehicle-card {
     width: 100%;
     padding: 1rem;
-    margin: 4rem auto;
+    margin: 0 auto;
     text-align: center;
     background: var(--lighter-black);
     backdrop-filter: blur(8px);
@@ -655,8 +655,8 @@ img {
     background-color: var(--primary-color);
 }
 
-#editBtn {
-    margin-right: .5rem;
+.editBtn {
+    margin-right: .8rem;
 }
 
 .crud-btns {
@@ -666,11 +666,16 @@ img {
     align-items: center;
     margin: 4rem auto;
     width: 40%;
-}
+}   
 
 .btn:active {
     box-shadow: var(--inset-clicked);
     opacity: .8;
+}
+
+.btn:hover {
+    box-shadow: 0 0 10px 2px #fff;
+    color: unset;
 }
 
 .btn-link {

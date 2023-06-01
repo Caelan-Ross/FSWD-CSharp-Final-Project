@@ -25,8 +25,10 @@
                         <div class="card-header flex">
                             <h3>@Html.DisplayFor(modelItem => item.Model.ModelName)</h3>
                             <div class="card-buttons flex">
-                                <a asp-action="Edit" asp-route-id="@item.VehicleId"><button class="btn" id="editBtn"><i class="fas fa-pencil-alt"></i></button></a>
-                                <a asp-action="Delete" asp-route-id="@item.VehicleId"><button class="btn" id="deleteBtn"><i class="fas fa-trash-alt"></i></button></a>
+                                <div class="card-buttons flex">
+                                    <a asp-action="Edit" asp-route-id="@item.VehicleId" class="btn editBtn"><i class="fas fa-pencil-alt"></i></a>
+                                    <a asp-action="Delete" asp-route-id="@item.VehicleId" class="btn deleteBtn"><i class="fas fa-trash-alt"></i></a>
+                                </div>
                             </div>
                     </div>
                     </a><a asp-action="Details" asp-route-id="@item.VehicleId">
