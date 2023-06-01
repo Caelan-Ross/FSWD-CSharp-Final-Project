@@ -8,16 +8,23 @@ using Microsoft.EntityFrameworkCore;
 using MACK;
 using MACK.Models;
 using MACK.Handlers;
+using Microsoft.Extensions.Hosting.Internal;
+using System.Web;
+using Azure;
+using Microsoft.Extensions.Hosting;
+using Microsoft.AspNetCore.Http;
 
 namespace MACK.Controllers
 {
     public class VehiclesController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly IWebHostEnvironment _hostEnvironment;
 
-        public VehiclesController(ApplicationDbContext context)
+        public VehiclesController(ApplicationDbContext context, IWebHostEnvironment hostEnvironment)
         {
-            _context = context;
+            _context = context; 
+            _hostEnvironment = hostEnvironment;
         }
 
         // GET: Vehicles
@@ -46,6 +53,38 @@ namespace MACK.Controllers
             return View(vehicle);
         }
 
+        public IActionResult FileUpload()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> FileUpload(IFormFile file)
+        {
+            if(file != null)
+            {
+                try
+                {
+                    string contentRootPath = _hostEnvironment.ContentRootPath;
+                    string path = contentRootPath + $"\\Temp\\{file.FileName}";
+                    using(FileStream stream = System.IO.File.Create(path))
+                    {
+                        await file.CopyToAsync(stream);
+                    }
+
+                    CSVHandler.ConvertDatatableToDb(CSVHandler.GetDataTableFromCsv(path));
+                    System.IO.File.Delete(path);
+                    return RedirectToAction(nameof(Index));
+                }
+                catch
+                {
+                    return View();
+                }
+            }
+
+            return View();
+        }
+
         // GET: Vehicles/Create
         public IActionResult Create()
         {
@@ -62,8 +101,31 @@ namespace MACK.Controllers
         {
             ModelState.Remove("Model");//Remove virtuals
 
+            if(VehicleHandlers.IfVehicleExists(vehicle.VIN,vehicle.ModelId))
+            {
+                ModelState.AddModelError(vehicle.VIN, "Vehicle with that VIN already exists.");
+            }
+
+            IFormCollection form = await Request.ReadFormAsync();
+            IFormFile? csv = form.Files.FirstOrDefault();
+            if(csv != null)
+            {
+                string contentRootPath = _hostEnvironment.ContentRootPath;
+                string path = Path.Combine(contentRootPath, $"/Temp/{Path.GetFileName(csv.FileName)}");
+                using(FileStream stream = System.IO.File.Create(path))
+                {
+                    await csv.CopyToAsync(stream);
+                }
+
+
+                return RedirectToAction(nameof(Index));
+            }
+
             if(ModelState.IsValid)
             {
+                
+                
+
                 VehicleHandlers.CreateVehicle(vehicle.VIN, vehicle.Year, vehicle.Fuel, vehicle.ExteriorColour,
                     vehicle.InteriorColour, vehicle.BodyDoorCount, vehicle.IsUsed, vehicle.IsAutomatic,
                     vehicle.Features, vehicle.Description, vehicle.ModelId, vehicle.Price, vehicle.StockNumber);
