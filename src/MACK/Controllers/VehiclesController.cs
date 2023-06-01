@@ -8,9 +8,11 @@ using Microsoft.EntityFrameworkCore;
 using MACK;
 using MACK.Models;
 using MACK.Handlers;
+using Microsoft.AspNetCore.Authorization;
 
 namespace MACK.Controllers
 {
+    [Authorize]
     public class VehiclesController : Controller
     {
         private readonly ApplicationDbContext _context;
