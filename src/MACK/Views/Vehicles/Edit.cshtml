@@ -11,9 +11,8 @@
 <form asp-action="Edit">
     <div class="row vehicle-form">
         <div class="col-md-4 vehicle-column">
-
+            <!-- First column -->
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="VehicleId" />
             <div class="form-group">
                 <label asp-for="VIN" class="control-label"></label>
                 <input asp-for="VIN" class="form-control" />
@@ -46,6 +45,7 @@
             </div>
         </div>
         <div class="col-md-4 vehicle-column">
+            <!-- Second column -->
             <div class="form-group">
                 <label asp-for="Features" class="control-label"></label>
                 <input asp-for="Features" class="form-control" />
@@ -56,34 +56,34 @@
                 <input asp-for="Description" class="form-control" />
                 <span asp-validation-for="Description" class="text-danger"></span>
             </div>
-            <div class="form-group form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="IsUsed" /> @Html.DisplayNameFor(model => model.IsUsed)
-                </label>
-            </div>
-            <div class="form-group form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="IsAutomatic" /> @Html.DisplayNameFor(model => model.IsAutomatic)
-                </label>
+            <div class="form-group">
+                <label asp-for="ModelId" class="control-label model-control"></label>
+                <select asp-for="ModelId" class="form-control model-control-dropdown" asp-items="ViewBag.ModelId"></select>
             </div>
             <div class="form-group">
-                <label asp-for="ModelId" class="control-label"></label>
-                <select asp-for="ModelId" class="form-control" asp-items="ViewBag.ModelId"></select>
-                <span asp-validation-for="ModelId" class="text-danger"></span>
+                <label asp-for="Price" class="control-label"></label>
+                <input asp-for="Price" class="form-control" />
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StockNumber" class="control-label"></label>
+                <input asp-for="StockNumber" class="form-control" />
+                <span asp-validation-for="StockNumber" class="text-danger"></span>
             </div>
             <div class="form-checks">
                 <div class="form-group form-check">
                     <label class="form-check-label">
-                        <input class="form-check-input" asp-for="IsUsed" /> @Html.DisplayNameFor(model => model.IsUsed)
+                        <input class="form-check-input my-2" asp-for="IsUsed" /> @Html.DisplayNameFor(model => model.IsUsed)
                     </label>
                 </div>
                 <div class="form-group form-check">
                     <label class="form-check-label">
-                        <input class="form-check-input" asp-for="IsAutomatic" /> @Html.DisplayNameFor(model => model.IsAutomatic)
+                        <input class="form-check-input my-2" asp-for="IsAutomatic" /> @Html.DisplayNameFor(model => model.IsAutomatic)
                     </label>
                 </div>
             </div>
-
+        </div>
+       
         </div> <div class="col-md-12 text-center">
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
