@@ -101,6 +101,11 @@ header {
     z-index: 1000;
 }
 
+footer {
+    padding: 0.5rem 0;
+    text-align: center;
+}
+
 .navbar {
     display: flex;
     justify-content: space-between;
