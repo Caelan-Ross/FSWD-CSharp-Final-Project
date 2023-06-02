@@ -9,6 +9,7 @@ using MACK;
 using MACK.Models;
 using MACK.Handlers;
 using Microsoft.AspNetCore.Authorization;
+using MACK.DTOs;
 
 namespace MACK.Controllers
 {
@@ -25,7 +26,7 @@ namespace MACK.Controllers
         // GET: Vehicles
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.Vehicles.Include(v => v.Model);
+            var applicationDbContext = _context.Vehicles.Include(v => v.Model).ThenInclude(m => m.Manufacturer);
             return View(await applicationDbContext.ToListAsync());
         }
 
@@ -39,6 +40,7 @@ namespace MACK.Controllers
 
             var vehicle = await _context.Vehicles
                 .Include(v => v.Model)
+                .ThenInclude(m => m.Manufacturer)
                 .FirstOrDefaultAsync(m => m.VehicleId == id);
             if (vehicle == null)
             {
@@ -51,7 +53,32 @@ namespace MACK.Controllers
         // GET: Vehicles/Create
         public IActionResult Create()
         {
-            ViewData["ModelId"] = new SelectList(_context.Models, "ModelId", "ModelName");
+            ViewData["ModelId"] = new SelectList(_context.Models.Select(m => new ModelDTO
+            {
+                ModelId = m.ModelId,
+                ModelName = m.ModelName,
+                ManufacturerId = m.ManufacturerId
+            }), "ModelId", "ModelName");
+
+            ViewBag.ManufacturerId = new SelectList(_context.Manufacturers.Select(m => new ManufacturerDTO
+            {
+                ManufacturerId = m.ManufacturerId,
+                ManufacturerName = m.ManufacturerName
+            }), "ManufacturerId", "ManufacturerName");
+
+            ViewData["Manufacturers"] = _context.Manufacturers.Select(m => new ManufacturerDTO
+            {
+                ManufacturerId = m.ManufacturerId,
+                ManufacturerName = m.ManufacturerName
+            }).ToList();
+
+            ViewData["Models"] = _context.Models.Include(m => m.Manufacturer).Select(m => new ModelDTO
+            {
+                ModelId = m.ModelId,
+                ModelName = m.ModelName,
+                ManufacturerId = m.ManufacturerId
+            }).ToList();
+
             return View();
         }
 
@@ -64,14 +91,14 @@ namespace MACK.Controllers
         {
             ModelState.Remove("Model");//Remove virtuals
 
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 VehicleHandlers.CreateVehicle(vehicle.VIN, vehicle.Year, vehicle.Fuel, vehicle.ExteriorColour,
                     vehicle.InteriorColour, vehicle.BodyDoorCount, vehicle.IsUsed, vehicle.IsAutomatic,
                     vehicle.Features, vehicle.Description, vehicle.ModelId, vehicle.Price, vehicle.StockNumber);
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ModelId"] = new SelectList(_context.Models, "ModelId", "ModelName", vehicle.ModelId);
+            ViewData["ModelId"] = new SelectList(_context.Models.Include(m => m.Manufacturer), "ModelId", "ModelName", vehicle.ModelId);
             return View(vehicle);
         }
 
@@ -83,12 +110,12 @@ namespace MACK.Controllers
                 return NotFound();
             }
 
-            var vehicle = await _context.Vehicles.FindAsync(id);
+            var vehicle = await _context.Vehicles.Include(v => v.Model).ThenInclude(m => m.Manufacturer).FirstOrDefaultAsync(v => v.VehicleId == id);
             if (vehicle == null)
             {
                 return NotFound();
             }
-            ViewData["ModelId"] = new SelectList(_context.Models, "ModelId", "ModelName", vehicle.ModelId);
+            ViewData["ModelId"] = new SelectList(_context.Models.Include(m => m.Manufacturer), "ModelId", "ModelName", vehicle.ModelId);
             return View(vehicle);
         }
 
@@ -105,7 +132,7 @@ namespace MACK.Controllers
             }
             ModelState.Remove("Model");//Remove virtuals
 
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 try
                 {
@@ -124,7 +151,7 @@ namespace MACK.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ModelId"] = new SelectList(_context.Models, "ModelId", "ModelName", vehicle.ModelId);
+            ViewData["ModelId"] = new SelectList(_context.Models.Include(m => m.Manufacturer), "ModelId", "ModelName", vehicle.ModelId);
             return View(vehicle);
         }
 
@@ -138,6 +165,7 @@ namespace MACK.Controllers
 
             var vehicle = await _context.Vehicles
                 .Include(v => v.Model)
+                .ThenInclude(m => m.Manufacturer)
                 .FirstOrDefaultAsync(m => m.VehicleId == id);
             if (vehicle == null)
             {
@@ -161,14 +189,15 @@ namespace MACK.Controllers
             {
                 VehicleHandlers.DeleteVehicle(vehicle);
             }
-            
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool VehicleExists(int id)
         {
-          return (_context.Vehicles?.Any(e => e.VehicleId == id)).GetValueOrDefault();
+            return (_context.Vehicles?.Include(v => v.Model).ThenInclude(m => m.Manufacturer).Any(e => e.VehicleId == id)).GetValueOrDefault();
         }
     }
 }
+

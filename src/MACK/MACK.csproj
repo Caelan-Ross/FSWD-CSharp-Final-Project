@@ -25,4 +25,10 @@
     <PackageReference Include="System.Data.OleDb" Version="7.0.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Remove="DTOs\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="DTOs\" />
+  </ItemGroup>
 </Project>
