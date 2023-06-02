@@ -19,7 +19,7 @@
 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
+                    <span class="navbar-toggler-icon"><i class="fas fa-bars"></i></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
@@ -42,6 +42,34 @@
         </nav>
     </header>
     <div class="vehicle-data text-center page-header"><h2>@ViewData["Title"]</h2></div>
+    <button id="back-to-top-btn">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+    <script>
+        var backToTopButton = document.getElementById('back-to-top-btn');
+        var scrollThreshold = 200;
+
+        function handleScroll() {
+            if (window.pageYOffset > scrollThreshold) {
+                backToTopButton.style.display = 'block';
+            } else {
+                backToTopButton.style.display = 'none';
+            }
+        }
+
+        function scrollToTop() {
+            if (window.pageYOffset > 0) {
+                window.scrollBy(0, -800);
+                requestAnimationFrame(scrollToTop);
+            }
+        }
+
+        window.addEventListener('scroll', handleScroll);
+
+        backToTopButton.addEventListener('click', function () {
+            scrollToTop();
+        });
+    </script>
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()

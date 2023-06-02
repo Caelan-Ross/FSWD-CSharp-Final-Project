@@ -4045,6 +4045,7 @@ textarea.form-control-lg {
   background-repeat: no-repeat;
   background-position: center;
   background-size: 100%;
+  color: white;
 }
 
 .navbar-nav-scroll {
@@ -4052,7 +4053,7 @@ textarea.form-control-lg {
   overflow-y: auto;
 }
 
-@media (min-width: 576px) {
+@media (min-width: 600px) {
   .navbar-expand-sm {
     flex-wrap: nowrap;
     justify-content: flex-start;

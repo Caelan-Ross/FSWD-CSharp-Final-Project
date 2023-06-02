@@ -26,6 +26,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Temp\" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="DTOs\" />
   </ItemGroup>
   <ItemGroup>

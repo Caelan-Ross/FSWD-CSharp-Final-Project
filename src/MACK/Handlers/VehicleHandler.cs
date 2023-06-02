@@ -111,7 +111,7 @@ namespace MACK.Handlers
             {
                 try
                 {
-                    Vehicle vehicle = _context.Vehicles.First(m => m.VIN == vin && m.ModelId == modelId);
+                    Vehicle vehicle = _context.Vehicles.First(m => m.VIN.ToLower() == vin.ToLower() && m.ModelId == modelId);
                     exists = true;
                 }catch { }
             }

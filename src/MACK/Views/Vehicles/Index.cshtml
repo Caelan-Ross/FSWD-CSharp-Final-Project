@@ -1,4 +1,5 @@
-﻿@model IEnumerable<MACK.Models.Vehicle>
+﻿@using MACK.Handlers;
+@model IEnumerable<MACK.Models.Vehicle>
 @{
     ViewData["Title"] = "Vehicle Data";
 }
@@ -12,8 +13,9 @@
                 <i class="fas fa-plus"></i>
         </a>
         <!-- Upload -->
-        <a asp-action="#" class="btn">
-            <i class="fa-solid fa-arrow-up"></i>
+        <a asp-action="FileUpload" class="btn">
+            @*<i class="fa-solid fa-arrow-up"></i>*@
+            <i class="fas fa-upload"></i>
         </a>
     </div>
     <!-- Start of Vehicle CARDS -->
@@ -58,7 +60,7 @@
                             </li>
                             <li>
                                 <span>@Html.DisplayNameFor(model => model.Model.Manufacturer):</span>
-                                @Html.DisplayFor(modelItem => item.Model.Manufacturer.ManufacturerName)
+                                @Html.DisplayFor(modelItem => ManufacturerHandlers.GetManufacturerById(ModelHandlers.GetModelById(item.ModelId).ManufacturerId).ManufacturerName)
                             </li>
                         </ul>
                     </a>

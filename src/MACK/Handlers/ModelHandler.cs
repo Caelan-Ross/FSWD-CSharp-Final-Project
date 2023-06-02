@@ -87,7 +87,7 @@ namespace MACK.Handlers
             {
                 try
                 {
-                    model = _context.Models.First(m => m.ModelName == name && m.ManufacturerId == manufacturerId);
+                    model = _context.Models.First(m => m.ModelName.ToLower() == name.ToLower() && m.ManufacturerId == manufacturerId);
                 }
                 catch
                 {

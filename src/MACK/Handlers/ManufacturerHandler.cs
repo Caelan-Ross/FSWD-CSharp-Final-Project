@@ -85,7 +85,7 @@ namespace MACK.Handlers
             {
                 try
                 {
-                    manufacturer = _context.Manufacturers.First(m => m.ManufacturerName == name);
+                    manufacturer = _context.Manufacturers.First(m => m.ManufacturerName.ToLower() == name.ToLower());
 
                 }
                 catch
