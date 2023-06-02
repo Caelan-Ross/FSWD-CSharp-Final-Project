@@ -9,7 +9,7 @@
     <a asp-action="Index" class="btn editBtn"><i class="fa-solid fa-chevron-left"></i></a>
 </div>
 <hr />
-<form asp-action="Edit">
+<form method="post" asp-controller="Vehicles" asp-action="Edit">
     <div class="row vehicle-form">
         <div class="col-md-4 vehicle-column">
             <!-- First column -->
@@ -84,11 +84,10 @@
                 </div>
             </div>
         </div>
-       
-        </div> <div class="col-md-12 text-center">
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
+    </div>
+    <div class="col-md-12 text-center">
+        <div class="form-group">
+            <input type="submit" value="Save" class="btn btn-primary" />
         </div>
     </div>
 </form>

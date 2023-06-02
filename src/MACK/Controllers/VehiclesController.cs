@@ -60,7 +60,7 @@ namespace MACK.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("VehicleId,VIN,Year,Fuel,ExteriorColour,InteriorColour,BodyDoorCount,Weight,Features,Description,Dimensions,IsUsed,IsAutomatic,ModelId")] Vehicle vehicle)
+        public async Task<IActionResult> Create([Bind("VehicleId,VIN,Year,Fuel,ExteriorColour,InteriorColour,BodyDoorCount,Features,Description,IsUsed,IsAutomatic,ModelId,Price,StockNumber")] Vehicle vehicle)
         {
             ModelState.Remove("Model");//Remove virtuals
 
@@ -97,12 +97,9 @@ namespace MACK.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("VehicleId,VIN,Year,Fuel,ExteriorColour,InteriorColour,BodyDoorCount,Weight,Features,Description,Dimensions,IsUsed,IsAutomatic,ModelId")] Vehicle vehicle)
+        public async Task<IActionResult> Edit(int id, [Bind("VehicleId,VIN,Year,Fuel,ExteriorColour,InteriorColour,BodyDoorCount,Features,Description,IsUsed,IsAutomatic,ModelId,Price,StockNumber")] Vehicle vehicle)
         {
-            if (id != vehicle.VehicleId)
-            {
-                return NotFound();
-            }
+            vehicle.VehicleId = id;
             ModelState.Remove("Model");//Remove virtuals
 
             if(ModelState.IsValid)
