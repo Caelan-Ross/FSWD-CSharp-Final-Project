@@ -436,6 +436,28 @@ img {
     margin: 0 2rem;
 }
 
+.details-column {
+    background-color: var(--bg-light);
+    border-radius: 10px;
+    margin: 1rem auto;
+    width: 80%;
+}
+
+.vehicle-card.details > .card-header > img {
+    width: auto;
+    min-height: 10vw;
+    margin: 4rem auto;
+    border-radius: 10px;
+}
+
+.details-column ul li {
+    padding: 10px;
+    color: var(--darker-black);
+    border-radius: 10px;
+    display: flex;
+    border-bottom: .5rem solid var(--bg-light);
+}
+
 .home-copy {
     padding: 2rem
 }
