@@ -42,6 +42,34 @@
         </nav>
     </header>
     <div class="vehicle-data text-center page-header"><h2>@ViewData["Title"]</h2></div>
+    <button id="back-to-top-btn">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+    <script>
+        var backToTopButton = document.getElementById('back-to-top-btn');
+        var scrollThreshold = 200;
+
+        function handleScroll() {
+            if (window.pageYOffset > scrollThreshold) {
+                backToTopButton.style.display = 'block';
+            } else {
+                backToTopButton.style.display = 'none';
+            }
+        }
+
+        function scrollToTop() {
+            if (window.pageYOffset > 0) {
+                window.scrollBy(0, -800);
+                requestAnimationFrame(scrollToTop);
+            }
+        }
+
+        window.addEventListener('scroll', handleScroll);
+
+        backToTopButton.addEventListener('click', function () {
+            scrollToTop();
+        });
+    </script>
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()

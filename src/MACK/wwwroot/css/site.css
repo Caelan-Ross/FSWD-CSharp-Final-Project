@@ -730,6 +730,23 @@ img {
     margin-right: 0.2rem;
 }
 
+#back-to-top-btn {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    background-color:var(--primary-transparent);
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    font-size: 20px;
+    text-align: center;
+    line-height: 40px;
+    cursor: pointer;
+}
+
 .badge {
     display: inline-block;
     font-size: 0.8rem;
