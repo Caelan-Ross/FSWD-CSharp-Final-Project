@@ -119,11 +119,21 @@ footer {
     padding: 0.7rem 2rem;
     z-index: 1000;
     width: 100%;
-    height: 6rem;
     opacity: 1;
     position: relative;
     overflow: none;
     border-bottom: 1px solid rgba(74, 0, 0, 0.105);
+}
+
+.navbar-toggler {
+    color: white;
+}
+
+.fa-bars {
+    color: white;
+    position: absolute;
+    top: 29px;
+    right: 62.5px;
 }
 
 .logo:active {
@@ -221,7 +231,7 @@ img {
 }
 
 .logo {
-    width: clamp(100px, 20vw, 200px);
+    width: 10rem;
     height: auto;
     cursor: pointer;
 }
