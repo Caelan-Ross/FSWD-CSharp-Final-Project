@@ -53,6 +53,18 @@
                 <div class="col-md-4">
                     <ul>
                         <li>
+                            <span>@Html.DisplayNameFor(model => model.Model.ModelName)</span>
+                            @Html.DisplayFor(modelItem => Model.Model.ModelName)
+                        </li>
+                        <li>
+                            <span>@Html.DisplayNameFor(model => model.Price)</span>
+                            @Html.DisplayFor(modelItem => Model.Price)
+                        </li>
+                        <li>
+                            <span>@Html.DisplayNameFor(model => model.StockNumber)</span>
+                            @Html.DisplayFor(modelItem => Model.StockNumber)
+                        </li>
+                        <li>
                             <span>@Html.DisplayNameFor(model => model.IsUsed)</span>
                             @Html.DisplayFor(modelItem => Model.IsUsed)
                         </li>
@@ -60,14 +72,7 @@
                             <span>@Html.DisplayNameFor(model => model.IsAutomatic)</span>
                             @Html.DisplayFor(modelItem => Model.IsAutomatic)
                         </li>
-                        <li>
-                            <span>@Html.DisplayNameFor(model => model.ModelId)</span>
-                            @Html.DisplayFor(modelItem => Model.ModelId)
-                        </li>
-                        <li>
-                            <span>@Html.DisplayNameFor(model => model.Model.ModelName)</span>
-                            @Html.DisplayFor(modelItem => Model.Model.ModelName)
-                        </li>
+
                     </ul>
                 </div>
             </div>
