@@ -42,7 +42,14 @@
                     </li>
                     <li>
                         <span>@Html.DisplayNameFor(model => model.Features)</span>
-                        @Html.DisplayFor(modelItem => Model.Features)
+                        <ul>
+                            @{
+                                foreach(string feature in Model.Features.Split('|'))
+                                {
+                                    <li>- @feature</li>
+                                }
+                            }
+                        </ul>
                     </li>
                     <li>
                         <span>@Html.DisplayNameFor(model => model.Description)</span>
