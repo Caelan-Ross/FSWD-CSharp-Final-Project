@@ -9,12 +9,12 @@
 </div>
 <div>
     <!-- Vehicle Card -->
-    <div class="vehicle-card">
+    <div class="vehicle-card details">
         <div class="card-header">
             <!-- Vehicle Image-->
             <img src="~/images/Vehicle.png" />
             <div class="row vehicle-form">
-                <div class="col-md-4">
+                <div class="col-md-4 details-column">
                     <ul>
                         <li>
                             <span>@Html.DisplayNameFor(model => model.VIN)</span>
@@ -42,19 +42,24 @@
                         </li>
                         <li>
                             <span>@Html.DisplayNameFor(model => model.Features)</span>
-                            @Html.DisplayFor(modelItem => Model.Features)
+                            <ul>
+                                @{
+                                    foreach (string feature in Model.Features.Split('|'))
+                                    {
+                                        <li>- @feature</li>
+                                    }
+                                }
+                            </ul>
                         </li>
                         <li>
                             <span>@Html.DisplayNameFor(model => model.Description)</span>
                             @Html.DisplayFor(modelItem => Model.Description)
                         </li>
                     </ul>
-                </div>
-                <div class="col-md-4">
                     <ul>
                         <li>
-                            <span>@Html.DisplayNameFor(model => model.Model.ModelName)</span>
-                            @Html.DisplayFor(modelItem => Model.Model.ModelName)
+                            <span>@Html.DisplayNameFor(model => model.IsUsed)</span>
+                            @Html.DisplayFor(modelItem => Model.IsUsed)
                         </li>
                         <li>
                             <span>@Html.DisplayNameFor(model => model.Price)</span>
@@ -65,18 +70,17 @@
                             @Html.DisplayFor(modelItem => Model.StockNumber)
                         </li>
                         <li>
-                            <span>@Html.DisplayNameFor(model => model.IsUsed)</span>
-                            @Html.DisplayFor(modelItem => Model.IsUsed)
-                        </li>
-                        <li>
                             <span>@Html.DisplayNameFor(model => model.IsAutomatic)</span>
                             @Html.DisplayFor(modelItem => Model.IsAutomatic)
+                        </li>
+                        <li>
+                            <span>@Html.DisplayNameFor(model => model.Model.ModelName)</span>
+                            @Html.DisplayFor(modelItem => Model.Model.ModelName)
                         </li>
 
                     </ul>
                 </div>
             </div>
-        </div>
         <!-- Button column -->
         <div class="col-md-12 text-center">
             <div class="form-group">
