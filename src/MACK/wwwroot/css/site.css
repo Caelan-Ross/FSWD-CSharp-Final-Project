@@ -440,7 +440,7 @@ img {
     background-color: var(--bg-light);
     border-radius: 10px;
     margin: 1rem auto;
-    width: 80%;
+    width: 100%;
 }
 
 .vehicle-card.details > .card-header > img {
@@ -769,6 +769,7 @@ img {
     text-align: center;
     line-height: 40px;
     cursor: pointer;
+    z-index: 999;
 }
 
 .badge {
@@ -1037,9 +1038,9 @@ table th {
     background: var(--light-color);
 }
 
-@media (max-width: 1310px) {
+@media (max-width: 1525px) {
     .grid-4 {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(3, 1fr);
     }
 
     .vehicle-data h2 {
@@ -1049,49 +1050,54 @@ table th {
     }
 }
 
-
-/* Mobile Styles */
-@media (max-width: 700px) {
-    .hide-sm {
-        display: none;
-    }
-
-    .grid-2,
-    .grid-3,
+@media (max-width: 1170px) {
     .grid-4 {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr);
     }
 
-    /* Text Styles */
-    .x-large {
-        font-size: 3rem;
-    }
 
-    .large {
-        font-size: 2rem;
-    }
-
-    .lead {
-        font-size: 1rem;
-    }
-
-    /* Navbar */
-    .navbar {
-        display: block;
-        text-align: center;
-    }
-
-        .navbar ul {
-            text-align: center;
-            justify-content: center;
+    /* Mobile Styles */
+    @media (max-width: 780px) {
+        .hide-sm {
+            display: none;
         }
 
-    .crud-btns {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        align-items: center;
-        margin: 4rem auto;
-        width: 40%;
+        .grid-2,
+        .grid-3,
+        .grid-4 {
+            grid-template-columns: 1fr;
+        }
+
+        /* Text Styles */
+        .x-large {
+            font-size: 3rem;
+        }
+
+        .large {
+            font-size: 2rem;
+        }
+
+        .lead {
+            font-size: 1rem;
+        }
+
+        /* Navbar */
+        .navbar {
+            display: block;
+            text-align: center;
+        }
+
+            .navbar ul {
+                text-align: center;
+                justify-content: center;
+            }
+
+        .crud-btns {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            margin: 4rem auto;
+            width: 40%;
+        }
     }
-}
