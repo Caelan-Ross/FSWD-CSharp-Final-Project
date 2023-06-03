@@ -49,28 +49,54 @@ namespace MACK.Controllers
         // GET: Models/Create
         public IActionResult Create()
         {
-            ViewData["ManufacturerId"] = new SelectList(_context.Manufacturers, "ManufacturerId", "ManufacturerName");
+            var manufacturers = _context.Manufacturers.Select(m => new SelectListItem
+            {
+                Value = m.ManufacturerId.ToString(),
+                Text = m.ManufacturerName
+            }).ToList();
+
+            ViewBag.Manufacturers = manufacturers;
+
             return View();
         }
 
         // POST: Models/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ModelId,ModelName,ManufacturerId")] Model model)
+        public async Task<IActionResult> Create([Bind("ModelId,ModelName,ManufacturerId")] Model model, string newModelName)
         {
             ModelState.Remove("Vehicles");//Remove virtuals
             ModelState.Remove("Manufacturer");//Remove virtuals
 
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
-                ModelHandlers.CreateModel(model.ModelName, model.ManufacturerId);
+                if (!string.IsNullOrEmpty(newModelName))
+                {
+                    // Create a new model using the newModelName
+                    int manufacturerId = model.ManufacturerId; // Assuming ManufacturerId is already set correctly
+                    ModelHandlers.CreateModel(newModelName, manufacturerId);
+                }
+                else
+                {
+                    // Create a new model using the provided model name
+                    ModelHandlers.CreateModel(model.ModelName, model.ManufacturerId);
+                }
+
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ManufacturerId"] = new SelectList(_context.Manufacturers, "ManufacturerId", "ManufacturerName", model.ManufacturerId);
+
+            var manufacturers = _context.Manufacturers.Select(m => new SelectListItem
+            {
+                Value = m.ManufacturerId.ToString(),
+                Text = m.ManufacturerName
+            }).ToList();
+
+            ViewBag.Manufacturers = manufacturers;
+
             return View(model);
         }
+
+
 
         // GET: Models/Edit/5
         public async Task<IActionResult> Edit(int? id)
