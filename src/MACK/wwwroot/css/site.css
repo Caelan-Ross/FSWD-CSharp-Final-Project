@@ -212,8 +212,13 @@ footer {
         width: 100%;
     }
 
-.logout-btn {
+button.nav-link.logout-btn {
     outline: 1px solid white;
+    padding: 2px 10px;
+}
+
+ul.navbar-nav > li {
+    margin: .25rem;
 }
 
 .logout-btn:hover::after {
@@ -335,6 +340,26 @@ img {
     margin-left: 10px; /* Adjust the value to achieve the desired spacing */
 }
 
+.nav-pills > .nav-item a{
+    margin: 1rem;
+    color: var(--light-color);
+}
+
+.nav-pills > .nav-item a:hover {
+    background-color: var(--primary-transparent);
+}
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+    background-color: var(--primary-transparent);
+}
+
+.account-form {
+    height: auto;
+    padding: 2rem;
+    border-radius: 10px;
+}
+
+
 /* Vehicle Cards */
 .vehicle-card {
     width: 100%;
@@ -440,7 +465,7 @@ img {
     background-color: var(--bg-light);
     border-radius: 10px;
     margin: 1rem auto;
-    width: 80%;
+    width: 100%;
 }
 
 .vehicle-card.details > .card-header > img {
@@ -769,6 +794,7 @@ img {
     text-align: center;
     line-height: 40px;
     cursor: pointer;
+    z-index: 999;
 }
 
 .badge {
@@ -1092,9 +1118,9 @@ table th {
     background: var(--light-color);
 }
 
-@media (max-width: 1310px) {
+@media (max-width: 1525px) {
     .grid-4 {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(3, 1fr);
     }
 
     .vehicle-data h2 {
@@ -1104,49 +1130,54 @@ table th {
     }
 }
 
-
-/* Mobile Styles */
-@media (max-width: 700px) {
-    .hide-sm {
-        display: none;
-    }
-
-    .grid-2,
-    .grid-3,
+@media (max-width: 1170px) {
     .grid-4 {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr);
     }
 
-    /* Text Styles */
-    .x-large {
-        font-size: 3rem;
-    }
 
-    .large {
-        font-size: 2rem;
-    }
-
-    .lead {
-        font-size: 1rem;
-    }
-
-    /* Navbar */
-    .navbar {
-        display: block;
-        text-align: center;
-    }
-
-        .navbar ul {
-            text-align: center;
-            justify-content: center;
+    /* Mobile Styles */
+    @media (max-width: 780px) {
+        .hide-sm {
+            display: none;
         }
 
-    .crud-btns {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        align-items: center;
-        margin: 4rem auto;
-        width: 40%;
+        .grid-2,
+        .grid-3,
+        .grid-4 {
+            grid-template-columns: 1fr;
+        }
+
+        /* Text Styles */
+        .x-large {
+            font-size: 3rem;
+        }
+
+        .large {
+            font-size: 2rem;
+        }
+
+        .lead {
+            font-size: 1rem;
+        }
+
+        /* Navbar */
+        .navbar {
+            display: block;
+            text-align: center;
+        }
+
+            .navbar ul {
+                text-align: center;
+                justify-content: center;
+            }
+
+        .crud-btns {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            margin: 4rem auto;
+            width: 40%;
+        }
     }
-}
