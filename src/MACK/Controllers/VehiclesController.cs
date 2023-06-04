@@ -145,16 +145,11 @@ namespace MACK.Controllers
                 {
                     await csv.CopyToAsync(stream);
                 }
-
-
                 return RedirectToAction(nameof(Index));
             }
 
             if(ModelState.IsValid)
             {
-                
-                
-
                 VehicleHandlers.CreateVehicle(vehicle.VIN, vehicle.Year, vehicle.Fuel, vehicle.ExteriorColour,
                     vehicle.InteriorColour, vehicle.BodyDoorCount, vehicle.IsUsed, vehicle.IsAutomatic,
                     vehicle.Features, vehicle.Description, vehicle.ModelId, vehicle.Price, vehicle.StockNumber);
@@ -256,6 +251,21 @@ namespace MACK.Controllers
         private bool VehicleExists(int id)
         {
             return (_context.Vehicles?.Include(v => v.Model).ThenInclude(m => m.Manufacturer).Any(e => e.VehicleId == id)).GetValueOrDefault();
+        }
+
+        public IActionResult GetOptions(int selectedValue)
+        {
+            // Get the options for the second dropdown based on the selected value
+            var options = ModelHandlers.GetAllModels().Where(m => m.ManufacturerId == selectedValue);
+
+            // Transform the options to a format suitable for JavaScript
+            var formattedOptions = options.Select(option => new
+            {
+                Value = option.ModelId,
+                Text = option.ModelName
+            });
+
+            return Json(formattedOptions);
         }
     }
 }

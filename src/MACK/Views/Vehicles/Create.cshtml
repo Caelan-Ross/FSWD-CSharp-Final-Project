@@ -1,5 +1,4 @@
 ﻿@model MACK.Models.Vehicle
-
 @{
     ViewData["Title"] = "Create";
 }
@@ -30,14 +29,8 @@
                 <label asp-for="Model.Manufacturer.ManufacturerId" class="control-label model-control">Manufacturer</label>
                 <select id="manufacturerDropdown" asp-for="Model.Manufacturer.ManufacturerId" class="form-control" asp-items="ViewBag.ManufacturerId">
                     <option value="" selected disabled>Select a manufacturer</option>
-                    <option value="-1">Create New</option>
                 </select>
                 <span asp-validation-for="Model.Manufacturer.ManufacturerId" class="text-danger"></span>
-            </div>
-            <!-- New Manufacturer input field -->
-            <div id="newManufacturerInput" class="form-group" style="display: none;">
-                <label>New Manufacturer</label>
-                <input type="text" name="NewManufacturerName" class="form-control" disabled />
             </div>
             <div class="form-group">
                 <label asp-for="Fuel" class="control-label"></label>
@@ -74,15 +67,10 @@
             </div>
             <div class="form-group">
                 <label asp-for="ModelId" class="control-label">Model</label>
-                <select id="modelDropdown" asp-for="ModelId" class="form-control" disabled>
+                <select id="modelDropdown" asp-for="ModelId" class="form-control">
                     <option value="" selected disabled>Select a model</option>
                 </select>
                 <span asp-validation-for="ModelId" class="text-danger"></span>
-            </div>
-            <!-- New Model input field -->
-            <div id="newModelInput" class="form-group" style="display: none;">
-                <label>New Model</label>
-                <input type="text" name="NewModelName" class="form-control" disabled />
             </div>
 
             <div class="form-group">
@@ -126,77 +114,32 @@
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
 
         <script>
-var manufacturerDropdown = document.querySelector("#manufacturerDropdown");
-var modelDropdown = document.querySelector("#modelDropdown");
-var newManufacturerInput = document.querySelector("#newManufacturerInput");
-var newModelInput = document.querySelector("#newModelInput");
-var modelLabel = document.querySelector("div.form-group > label[for='ModelId']"); // Select the label for ModelId
+            $(document).ready(function () {
+                $('#manufacturerDropdown').change(function () {
+                    var selectedValue = $(this).val();
 
-var modelsData = @Html.Raw(Json.Serialize(ViewData["Models"]));
-var manufacturersData = @Html.Raw(Json.Serialize(ViewData["Manufacturers"]));
+                    // Make an AJAX request to the server to get the options for the second dropdown
+                    $.ajax({
+                        url: '@Url.Action("GetOptions", "Vehicles")',
+                        type: 'GET',
+                        data: { selectedValue: selectedValue },
+                        success: function (data) {
+                            // Populate the second dropdown with the received options
+                            var dropdown2 = $('#modelDropdown');
+                            dropdown2.empty();
 
-console.log("Models data: ", modelsData);
-console.log("Manufacturers data: ", manufacturersData);
-
-manufacturerDropdown.addEventListener("change", function() {
-    var manufacturerId = this.value;
-
-    console.log("Selected manufacturer ID: ", manufacturerId);
-
-    if (manufacturerId == "-1") {
-        newManufacturerInput.style.display = "block";
-        newManufacturerInput.querySelector("input").disabled = false;
-
-        newModelInput.style.display = "block";
-        newModelInput.querySelector("input").disabled = false;
-
-        modelDropdown.style.display = "none";
-        modelDropdown.disabled = true;
-
-        // Hide the model label
-        modelLabel.style.display = "none";
-    } else {
-        newManufacturerInput.style.display = "none";
-        newManufacturerInput.querySelector("input").disabled = true;
-
-        newModelInput.style.display = "none";
-        newModelInput.querySelector("input").disabled = true;
-
-        modelDropdown.style.display = "block";
-        modelDropdown.disabled = false;
-
-        // Show the model label
-        modelLabel.style.display = "block";
-
-        var relatedModels = modelsData.filter(m => m.manufacturerId == manufacturerId);
-
-        console.log("Related models: ", relatedModels);
-
-        var modelOptions = relatedModels.map(m => `<option value="${m.modelId}">${m.modelName}</option>`).join("");
-        modelDropdown.innerHTML = '<option value="" selected disabled>Select a model</option>' +
-                                  '<option value="-1">Create New</option>' + modelOptions;
-    }
-});
-
-modelDropdown.addEventListener("change", function() {
-    var modelId = this.value;
-
-    if (modelId == "-1") {
-        newModelInput.style.display = "block";
-        newModelInput.querySelector("input").disabled = false;
-    } else {
-        newModelInput.style.display = "none";
-        newModelInput.querySelector("input").disabled = true;
-    }
-});
-
-
+                            $.each(data, function (index, option) {
+                                console.log(option)
+                                dropdown2.append($('<option></option>').val(option.value).text(option.text));
+                            });
+                        },
+                        error: function () {
+                            alert('An error occurred while fetching options for the second dropdown.');
+                        }
+                    });
+                });
+            });
         </script>
-
-
-
-
-
 
     }
 }
