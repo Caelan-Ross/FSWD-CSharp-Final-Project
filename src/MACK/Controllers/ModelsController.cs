@@ -27,25 +27,6 @@ namespace MACK.Controllers
             return View(await applicationDbContext.ToListAsync());
         }
 
-        // GET: Models/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null || _context.Models == null)
-            {
-                return NotFound();
-            }
-
-            var model = await _context.Models
-                .Include(m => m.Manufacturer)
-                .FirstOrDefaultAsync(m => m.ModelId == id);
-            if (model == null)
-            {
-                return NotFound();
-            }
-
-            return View(model);
-        }
-
         // GET: Models/Create
         public IActionResult Create()
         {
@@ -93,62 +74,6 @@ namespace MACK.Controllers
 
             ViewBag.Manufacturers = manufacturers;
 
-            return View(model);
-        }
-
-
-
-        // GET: Models/Edit/5
-        public async Task<IActionResult> Edit(int? id)
-        {
-            if (id == null || _context.Models == null)
-            {
-                return NotFound();
-            }
-
-            Model model = ModelHandlers.GetModelById((int)id);
-            if (model == null)
-            {
-                return NotFound();
-            }
-            ViewData["ManufacturerId"] = new SelectList(_context.Manufacturers, "ManufacturerId", "ManufacturerName", model.ManufacturerId);
-            return View(model);
-        }
-
-        // POST: Models/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ModelId,ModelName,ManufacturerId")] Model model)
-        {
-            if (id != model.ModelId)
-            {
-                return NotFound();
-            }
-            ModelState.Remove("Vehicles");//Remove virtual lists
-            ModelState.Remove("Manufacturer");//Remove virtuals
-
-            if(ModelState.IsValid)
-            {
-                try
-                {
-                    ModelHandlers.UpdateModel(model);
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!ModelExists(model.ModelId))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
-            }
-            ViewData["ManufacturerId"] = new SelectList(_context.Manufacturers, "ManufacturerId", "ManufacturerName", model.ManufacturerId);
             return View(model);
         }
 

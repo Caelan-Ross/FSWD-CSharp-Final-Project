@@ -28,23 +28,6 @@ namespace MACK.Controllers
                           Problem("Entity set 'ApplicationDbContext.Manufacturers'  is null.");
         }
 
-        // GET: Manufacturers/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null || _context.Manufacturers == null)
-            {
-                return NotFound();
-            }
-
-            Manufacturer manufacturer = ManufacturerHandlers.GetManufacturerById((int)id);
-            if (manufacturer == null)
-            {
-                return NotFound();
-            }
-
-            return View(manufacturer);
-        }
-
         // GET: Manufacturers/Create
         public IActionResult Create()
         {
@@ -63,57 +46,6 @@ namespace MACK.Controllers
             if(ModelState.IsValid)
             {
                 ManufacturerHandlers.CreateManufacturer(manufacturer.ManufacturerName);
-                return RedirectToAction(nameof(Index));
-            }
-            return View(manufacturer);
-        }
-
-        // GET: Manufacturers/Edit/5
-        public async Task<IActionResult> Edit(int? id)
-        {
-            if (id == null || _context.Manufacturers == null)
-            {
-                return NotFound();
-            }
-
-            Manufacturer manufacturer = ManufacturerHandlers.GetManufacturerById((int)id);
-            if (manufacturer == null)
-            {
-                return NotFound();
-            }
-            return View(manufacturer);
-        }
-
-        // POST: Manufacturers/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ManufacturerId,ManufacturerName")] Manufacturer manufacturer)
-        {
-            if (id != manufacturer.ManufacturerId)
-            {
-                return NotFound();
-            }
-            ModelState.Remove("Models");//Remove virtual lists
-
-            if(ModelState.IsValid)
-            {
-                try
-                {
-                    ManufacturerHandlers.UpdateManufacturer(manufacturer);
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!ManufacturerExists(manufacturer.ManufacturerId))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
                 return RedirectToAction(nameof(Index));
             }
             return View(manufacturer);
