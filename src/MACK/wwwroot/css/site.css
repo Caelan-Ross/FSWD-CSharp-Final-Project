@@ -974,6 +974,19 @@ img {
     border-radius: 10px;
 }
 
+/* Table */
+td {
+    color: var(--light-color);
+}
+
+table th {
+    color: white;
+}
+
+.table-delete {
+    text-align: right;
+}
+
 /* Forms */
 input {
     margin: 1.2rem 0;

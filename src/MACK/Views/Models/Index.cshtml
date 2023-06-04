@@ -1,14 +1,22 @@
 ﻿@model IEnumerable<MACK.Models.Model>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Vehicle Models";
 }
 
-<h1>Index</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+<div class="vehicles-grid">
+    <!-- Heading -->
+    <div class="vehicle-data-title flex">
+        <h2>Models</h2>
+        <!-- Create -->
+        <a asp-action="Create" class="btn editBtn">
+            <i class="fas fa-plus"></i>
+        </a>
+    </div>
+</div>
+
+<!-- Display Models -->
 <table class="table">
     <thead>
         <tr>
@@ -22,20 +30,19 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.ModelName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Manufacturer.ManufacturerName)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.ModelId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.ModelId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.ModelId">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ModelName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Manufacturer.ManufacturerName)
+                </td>
+                <td class="table-delete">
+                    <a asp-action="Delete" asp-route-id="@item.ModelId">Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
