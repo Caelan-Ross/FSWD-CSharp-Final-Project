@@ -12,7 +12,7 @@
 <div class="vehicle-card details">
     <div class="card-header">
         <!-- Vehicle Image-->
-        <img src="~/images/Vehicle.png"/>
+        <img src="~/images/Vehicle.png" />
         <div class="row vehicle-form">
             <div class="col-md-4 details-column">
                 <ul>
@@ -44,7 +44,7 @@
                         <span>@Html.DisplayNameFor(model => model.Features)</span>
                         <ul>
                             @{
-                                foreach(string feature in Model.Features.Split('|'))
+                                foreach (string feature in Model.Features.Split('|'))
                                 {
                                     <li>- @feature</li>
                                 }
@@ -78,13 +78,14 @@
             </div>
         </div>
         <div class="col-md-12 text-center">
-        <div class="card-buttons flex">
+            <div class="card-buttons flex">
                 <a asp-action="Edit" asp-route-id="@Model.VehicleId" class="btn editBtn"><i class="fas fa-pencil-alt"></i></a>
                 <a asp-action="Delete" asp-route-id="@Model.VehicleId" class="btn deleteBtn"><i class="fas fa-trash-alt"></i></a>
+            </div>
         </div>
-        </div>
-    </div><div class="col-md-12 text-center">
-    <a asp-action="Index">Back to List</a>
+    </div>
+    <div class="col-md-12 text-center">
+        <a asp-action="Index">Back to List</a>
     </div>
 </div>
 <hr />
