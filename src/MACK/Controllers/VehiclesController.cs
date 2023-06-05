@@ -134,19 +134,6 @@ namespace MACK.Controllers
                 ModelState.AddModelError(vehicle.VIN, "Vehicle with that VIN already exists.");
             }
 
-            IFormCollection form = await Request.ReadFormAsync();
-            IFormFile? csv = form.Files.FirstOrDefault();
-            if(csv != null)
-            {
-                string contentRootPath = _hostEnvironment.ContentRootPath;
-                string path = Path.Combine(contentRootPath, $"/Temp/{Path.GetFileName(csv.FileName)}");
-                using(FileStream stream = System.IO.File.Create(path))
-                {
-                    await csv.CopyToAsync(stream);
-                }
-                return RedirectToAction(nameof(Index));
-            }
-
             if(ModelState.IsValid)
             {
                 VehicleHandlers.CreateVehicle(vehicle.VIN, vehicle.Year, vehicle.Fuel, vehicle.ExteriorColour,
