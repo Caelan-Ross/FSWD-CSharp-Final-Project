@@ -14,7 +14,6 @@ using Azure;
 using Microsoft.Extensions.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Authorization;
-using MACK.DTOs;
 
 namespace MACK.Controllers
 {
@@ -92,26 +91,26 @@ namespace MACK.Controllers
         // GET: Vehicles/Create
         public IActionResult Create()
         {
-            ViewData["ModelId"] = new SelectList(_context.Models.Select(m => new ModelDTO
+            ViewData["ModelId"] = new SelectList(_context.Models.Select(m => new Model
             {
                 ModelId = m.ModelId,
                 ModelName = m.ModelName,
                 ManufacturerId = m.ManufacturerId
             }), "ModelId", "ModelName");
 
-            ViewBag.ManufacturerId = new SelectList(_context.Manufacturers.Select(m => new ManufacturerDTO
+            ViewBag.ManufacturerId = new SelectList(_context.Manufacturers.Select(m => new Manufacturer
             {
                 ManufacturerId = m.ManufacturerId,
                 ManufacturerName = m.ManufacturerName
             }), "ManufacturerId", "ManufacturerName");
 
-            ViewData["Manufacturers"] = _context.Manufacturers.Select(m => new ManufacturerDTO
+            ViewData["Manufacturers"] = _context.Manufacturers.Select(m => new Manufacturer
             {
                 ManufacturerId = m.ManufacturerId,
                 ManufacturerName = m.ManufacturerName
             }).ToList();
 
-            ViewData["Models"] = _context.Models.Include(m => m.Manufacturer).Select(m => new ModelDTO
+            ViewData["Models"] = _context.Models.Include(m => m.Manufacturer).Select(m => new Model
             {
                 ModelId = m.ModelId,
                 ModelName = m.ModelName,
@@ -133,19 +132,6 @@ namespace MACK.Controllers
             if(VehicleHandlers.IfVehicleExists(vehicle.VIN,vehicle.ModelId))
             {
                 ModelState.AddModelError(vehicle.VIN, "Vehicle with that VIN already exists.");
-            }
-
-            IFormCollection form = await Request.ReadFormAsync();
-            IFormFile? csv = form.Files.FirstOrDefault();
-            if(csv != null)
-            {
-                string contentRootPath = _hostEnvironment.ContentRootPath;
-                string path = Path.Combine(contentRootPath, $"/Temp/{Path.GetFileName(csv.FileName)}");
-                using(FileStream stream = System.IO.File.Create(path))
-                {
-                    await csv.CopyToAsync(stream);
-                }
-                return RedirectToAction(nameof(Index));
             }
 
             if(ModelState.IsValid)

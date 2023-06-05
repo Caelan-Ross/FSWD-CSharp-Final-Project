@@ -31,8 +31,6 @@
 
   <ItemGroup>
     <None Remove="DTOs\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="DTOs\" />
+    <Folder Include="Temp\" />
   </ItemGroup>
 </Project>

@@ -8,9 +8,11 @@ using Microsoft.EntityFrameworkCore;
 using MACK;
 using MACK.Models;
 using MACK.Handlers;
+using Microsoft.AspNetCore.Authorization;
 
 namespace MACK.Controllers
 {
+    [Authorize]
     public class ModelsController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -44,25 +46,14 @@ namespace MACK.Controllers
         // POST: Models/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ModelId,ModelName,ManufacturerId")] Model model, string newModelName)
+        public async Task<IActionResult> Create([Bind("ModelId,ModelName,ManufacturerId")] Model model)
         {
             ModelState.Remove("Vehicles");//Remove virtuals
             ModelState.Remove("Manufacturer");//Remove virtuals
 
             if (ModelState.IsValid)
             {
-                if (!string.IsNullOrEmpty(newModelName))
-                {
-                    // Create a new model using the newModelName
-                    int manufacturerId = model.ManufacturerId; // Assuming ManufacturerId is already set correctly
-                    ModelHandlers.CreateModel(newModelName, manufacturerId);
-                }
-                else
-                {
-                    // Create a new model using the provided model name
-                    ModelHandlers.CreateModel(model.ModelName, model.ManufacturerId);
-                }
-
+                ModelHandlers.CreateModel(model.ModelName,  model.ManufacturerId);
                 return RedirectToAction(nameof(Index));
             }
 

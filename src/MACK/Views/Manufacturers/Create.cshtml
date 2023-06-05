@@ -3,17 +3,19 @@
 @{
     ViewData["Title"] = "Create";
 }
+<div class="vehicle-data-title flex">
+    <h2>Manufacturers</h2>
+    <a asp-action="Index" class="btn editBtn"><i class="fa-solid fa-chevron-left"></i></a>
+</div>
 
-<h1>Create</h1>
-
-<h4>Manufacturer</h4>
+<h4>Create Manufacturer</h4>
 <hr />
-<div class="row">
+<div class="row vehicle-form">
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="ManufacturerName" class="control-label"></label>
+                <label asp-for="ManufacturerName" class="control-label">Manufacturer Name</label>
                 <input asp-for="ManufacturerName" class="form-control" />
                 <span asp-validation-for="ManufacturerName" class="text-danger"></span>
             </div>
@@ -29,5 +31,7 @@
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }
