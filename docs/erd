@@ -1,165 +1,30 @@
-Table Corporation {
-  CorporationId int [pk, note: 'Eg. 1']
-  CorporationName varchar [unique, not null, note: 'Eg. AutoGroup Inc.']
-  AddressId int [ref: > Address.AddressId, unique, not null, note: 'Eg. 1']
-  Note: 'This table contains data about corporations that own one or more dealerships. Each corporation can have multiple dealerships but only one address.'
-}
-
-Table Dealership {
-  DealershipId int [pk, note: 'Eg. 1']
-  CorporationId int [ref: > Corporation.CorporationId, note: 'Eg. 1']
-  DealershipName varchar [not null, note: 'Eg. Lakeland Ford']
-  AddressId int [ref: > Address.AddressId, unique, not null, note: 'Eg. 2']
-  Note: 'This table contains data about specific dealerships, each owned by a corporation.'
-}
-
-Table Address {
-  AddressId int [pk, note: 'Eg. 1']
-  Street varchar [not null, note: 'Eg. 123 Main Street']
-  City varchar [not null, note: 'Eg. Prince Albert']
-  Province varchar [not null, note: 'Eg. Saskatchewan']
-  PostalCode varchar [not null, note: 'Eg. S6V-2X1']
-  Country varchar [not null, note: 'Eg. CA']
-  Note: 'This table contains data about addresses.'
-}
-
-Table Corporation_User {
-  UserId int [ref: > User.UserId, note: 'Eg. 1']
-  CorporationId int [ref: > Corporation.CorporationId, note: 'Eg. 1']
-  Indexes {
-    (UserId, CorporationId) [unique, note: 'Ensures unique pairing of user and corporation.'] 
-  }
-  Note: 'This table links Users with Corporations they belong to.'
-}
-
-Table User {
-  UserId int [pk, note: 'Eg. 1']
-  Username varchar [unique, not null, note: 'Eg. jsmith']
-  PasswordHash varchar [not null, note: 'Eg. Hashed password']
-  Email varchar [unique, not null, note: 'Eg. jsmith@example.com']
-  FirstName varchar [not null, note: 'Eg. John']
-  LastName varchar [not null, note: 'Eg. Smith']
-  ContactNumber varchar [unique, note: 'Eg. 123-456-7890']
-  RoleId int [ref: > UserRole.RoleId, not null, note: 'Eg. 1']
-  CreatedAt date [not null, note: 'Eg. 2023-05-11']
-  UpdatedAt date [note: 'Eg. 2023-05-12']
-  Note: 'This table contains data about users, including their contact information and role.'
-}
-
-Table UserRole {
-  RoleId int [pk, note: 'Eg. 1']
-  RoleName varchar [unique, not null, note: 'Eg. Administrator']
-  Note: 'This table contains data about various roles a user can have.'
-}
-
-
-
-
 Table Vehicle {
-  VIN varchar [pk, unique, not null, note: 'Eg. 1HGCM82633A123456']
-  Year int [note: 'Eg. 2020']
-  ManufacturerId int [ref: > Manufacturer.ManufacturerId, not null, note: 'Eg. 1']
-  ModelId int [ref: > Model.ModelId, not null, note: 'Eg. 1']
-  SeriesId int [ref: > Series.SeriesId, note: 'Eg. 1']
-  VehicleTypeId int [ref: > VehicleType.VehicleTypeId, not null, note: 'Eg. 1']
-  EngineCylinderCount int [note: 'Eg. 6']
-  EngineDisplacement varchar [note: 'Eg. 3.5L']
-  Engine varchar [note: 'Eg. V6']
-  Fuel varchar [note: 'Eg. Gasoline']
-  TransmissionId int [ref: > Transmission.TransmissionId, note: 'Eg. 1']
-  BodyDoorCount int [note: 'Eg. 4']
-  DrivetrainId int [ref: > Drivetrain.DrivetrainId, note: 'Eg. 1']
-  ExteriorColourId int [ref: > Colour.ColourId, note: 'Eg. 1']
-  InteriorColourId int [ref: > Colour.ColourId, note: 'Eg. 2']
-  CityMPG int [note: 'Eg. 25']
-  HighwayMPG int [note: 'Eg. 35']
-  Weight decimal [note: 'Eg. 1500']
-  Length decimal [note: 'Eg. 190.9']
-  Width decimal [note: 'Eg. 73.9']
-  Height decimal [note: 'Eg. 57.1']
-  Note: 'This table contains data about specific vehicles, including their features and specifications.'
-}
-
-Table VehicleListing {
-  ListingId int [pk, unique, note: 'Eg. 1']
-  VIN varchar [ref: > Vehicle.VIN, note: 'Eg. 1HGCM82633A123456']
-  StockNumber varchar [note: 'Eg. AG123']
-  ConditionId int [ref: > Condition.ConditionId, note: 'Eg. 1']
-  Odometer int [note: 'Eg. 5000']
-  MSRP decimal [note: 'Eg. 25000']
-  Price decimal [note: 'Eg. 24000']
-  InventoryDate date [note: 'Eg. 2023-05-11']
-  Certified boolean [note: 'Eg. true']
-  Description text [note: 'Eg. Excellent condition, low mileage']
-  Features text [note: 'Eg. Leather seats, sunroof, navigation system']
-  PhotoUrlList text [note: 'Eg. www.example.com/photo1.jpg,www.example.com/photo2.jpg']
-  PhotosLastModifiedDate date [note: 'Eg. 2023-05-12']
-  Age int [note: 'Eg. 3']
-  Cost decimal [note: 'Eg. 20000']
-  DealershipId int [ref: > Dealership.DealershipId, note: 'Eg. 1']
-  created_at date [note: 'Eg. 2023-05-11']
-  updated_at date [note: 'Eg. 2023-05-12']
-  deleted_at date [note: 'Eg. 2023-06-01']
-  Indexes {
-    (StockNumber, DealershipId) [unique, note: 'Ensures unique pairing of stock number and dealership.'] 
-  }
-  Note: 'This table contains data about vehicle listings, including their condition, price, and associated dealership.'
-}
-
-
-Table Manufacturer {
-  ManufacturerId int [pk, note: 'Eg. 1']
-  ManufacturerName varchar [unique, not null, note: 'Eg. Honda']
-  Note: 'This table contains data about vehicle manufacturers.'
+  vehicle_id int [pk]
+  vin varchar(18)
+  model_year int
+  price double
+  stock_number varchar(24)
+  fuel varchar(128)
+  exterior_colour varchar(128)
+  interior_colour varchar(128)
+  body_door_count int
+  features varchar(128)
+  description varchar(128)
+  is_used bool
+  is_automatic bool
+  model_id int
 }
 
 Table Model {
-  ModelId int [pk, note: 'Eg. 1']
-  ModelName varchar [not null, note: 'Eg. Accord']
-  ManufacturerId int [ref: > Manufacturer.ManufacturerId, note: 'Eg. 1']
-  Indexes {
-    (ModelName, ManufacturerId) [unique, note: 'Ensures unique pairing of model name and manufacturer.'] 
-  }
-  Note: 'This table contains data about vehicle models, each associated with a manufacturer.'
+  model_id int [pk]
+  model_name varchar(128)
+  manufacturer_id int
 }
 
-Table Series {
-  SeriesId int [pk, note: 'Eg. 1']
-  SeriesName varchar [not null, note: 'Eg. LX']
-  ModelId int [ref: > Model.ModelId, note: 'Eg. 1']
-  Indexes {
-    (SeriesName, ModelId) [unique, note: 'Ensures unique pairing of series name and model.'] 
-  }
-  Note: 'This table contains data about vehicle series, each associated with a model.'
+Table Manufacturer {
+  manufacturer_id int [pk]
+  manufacturer_name varchar(128)
 }
 
-Table VehicleType {
-  VehicleTypeId int [pk, note: 'Eg. 1']
-  TypeName varchar [unique, note: 'Eg. Sedan']
-  Note: 'This table contains data about different types of vehicles.'
-}
-
-Table Condition {
-  ConditionId int [pk, note: 'Eg. 1']
-  ConditionName varchar [unique, note: 'Eg. Used']
-  Note: 'This table contains data about the condition of vehicles.'
-}
-
-Table Transmission {
-  TransmissionId int [pk, note: 'Eg. 1']
-  TransmissionType varchar [unique, note: 'Eg. Automatic']
-  TransmissionGears int [note: 'Eg. 6']
-  Note: 'This table contains data about the types of transmissions vehicles can have.'
-}
-
-Table Drivetrain {
-  DrivetrainId int [pk, note: 'Eg. 1']
-  DrivetrainType varchar [unique, note: 'Eg. FWD']
-  Note: 'This table contains data about the types of drivetrains vehicles can have.'
-}
-
-Table Colour {
-  ColourId int [pk, note: 'Eg. 1']
-  ColourName varchar [unique, note: 'Eg. Red']
-  Note: 'This table contains data about the colors vehicles can have, for both interior and exterior.'
-}
+Ref: Vehicle.model_id - Model.model_id
+Ref: Model.manufacturer_id - Manufacturer.manufacturer_id
