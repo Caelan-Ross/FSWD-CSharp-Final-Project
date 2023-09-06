@@ -108,5 +108,4 @@ OUT OF OR IN CONNECTION
 ## ✍️ Author(s)
 - [Minh Hoang](https://github.com/mintiefresh) (CCID: minhtuan)
 - [Kevin Larner](https://github.com/Larnerk) (CCID: larnerk)
-- [Andrew Potter](https://github.com/SaskatchewanPython) (CCID: rapotter)
 - [Caelan Ross](https://github.com/Caelan-Ross) (CCID: cjross1)
